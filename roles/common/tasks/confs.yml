@@ -1,0 +1,8 @@
+---
+
+- name: vimrc
+  copy: src=vimrc dest={{ user.home }}/.vimrc
+
+- name: zshrc
+  copy: src=zshrc dest={{ user.home }}/.zshrc
+

@@ -1,0 +1,10 @@
+---
+
+- name: Get zsh path
+  command: which zsh
+  register: zsh_path
+  changed_when: False
+  check_mode: no
+
+- name: Set zsh as default shell
+  user: name={{ host_user }} shell={{ zsh_path.stdout }}

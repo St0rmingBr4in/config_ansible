@@ -1,0 +1,23 @@
+---
+
+- name: Install openntpd (Debian)
+  when: ansible_distribution == 'Debian'
+  apt: name=openntpd state=present
+
+- name: Install openntpd (Archlinux)
+  when: ansible_distribution == 'Archlinux'
+  pacman: name=openntpd state=present
+
+- name: Configure ntpd.conf (Debian)
+  when: ansible_distribution == 'Debian'
+  copy: src=ntpd.conf dest=/etc/openntpd/ntpd.conf
+  notify: restart ntpd
+
+- name: Configure ntpd.conf (Archlinux)
+  when: ansible_distribution == 'Archlinux'
+  copy: src=ntpd.conf dest=/etc/ntpd.conf
+  notify: restart ntpd
+
+- name: Configure default openntpd
+  copy: src=default_openntpd dest=/etc/default/openntpd
+  notify: restart ntpd

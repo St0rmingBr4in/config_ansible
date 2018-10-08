@@ -1,0 +1,6 @@
+---
+
+- import_tasks: packages.yml
+- import_tasks: shell.yml
+- import_tasks: confs.yml
+- import_tasks: ssh.yml

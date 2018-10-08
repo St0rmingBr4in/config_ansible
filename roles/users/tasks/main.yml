@@ -1,0 +1,14 @@
+---
+
+- name: Create users
+  user: name={{ item.name }}
+  with_items: "{{ users }}"
+
+- name: Add ssh authorized keys
+  authorized_key:
+    user: "{{ item.0.name }}"
+    state: present
+    key: '{{ item.1 }}'
+  with_subelements:
+    - "{{ users }}"
+    - ssh_keys

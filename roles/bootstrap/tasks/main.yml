@@ -1,0 +1,6 @@
+---
+
+- name: Install ansible prerequisites
+  script: ansible_prerequisites.sh
+  args:
+    creates: /root/.ansible_prereqs_installed

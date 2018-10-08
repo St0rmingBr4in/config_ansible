@@ -1,0 +1,9 @@
+---
+
+- name: Disable ssh password authentification
+  lineinfile: dest=/etc/ssh/sshd_config regexp=PasswordAuthentication line="PasswordAuthentication no"
+  when: authorize_ssh_password is not defined or authorize_ssh_password == False
+  notify: restart sshd
+
+- name: Set ssh authorized_keys
+  authorized_key: key="{{ ssh_authorized_keys|join('\n') }}"
