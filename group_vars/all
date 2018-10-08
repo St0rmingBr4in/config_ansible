@@ -1,0 +1,5 @@
+ansible_ssh_user: root
+ansible_python_interpreter: "/usr/bin/env python"
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjtsXMH/A7cZEaEgARF+pVkO0ydOiglAmuQmzm6lFRmvrKEQAClZKDwFyrtFegsfaSH2m2GmjMJXcIL0gsMKhJorllqK7XO9yqp8vcpGUye3V8MzdpmnHY0xcsJRe/JQFYve1BSGOo/i9joJmM2Eadvmect/LA0wrt9CoBymJgPf/FkwX2v5EbrRySXkFsSuDIhpsQxqpd7b3vdXp0YD0R8X0AH+bNDzlxO705Za3vy3dJpTJWxSJBy6r6MHnolrq88tk9IJ4+GCQ8n9vvnRLTKaq7DjsFpxzqIXaafmcJNlP5berhpFrX1v+p3S/JVR/xMyBkceCbOMX6xiqOrC1X st0rmingbr4in@ThinkPad-T460-julien
