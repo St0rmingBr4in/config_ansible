@@ -12,3 +12,9 @@
     dest: "{{ user.home }}/.zshrc"
     owner: "{{ user.name }}"
 
+- name: gitconfig
+  copy:
+    src: gitconfig
+    dest: "{{ user.home }}/.gitconfig"
+    owner: "{{ user.name }}"
+
