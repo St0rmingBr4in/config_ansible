@@ -1,1 +1,3 @@
 - import_playbook: config/common.yml
+- import_playbook: config/docker.yml
+- import_playbook: config/xorg.yml

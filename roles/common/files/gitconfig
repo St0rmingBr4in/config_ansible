@@ -1,0 +1,5 @@
+[user]
+	email = doche_j@epita.fr
+	name = Julien DOCHE
+[pull]
+	rebase = true

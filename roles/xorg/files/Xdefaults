@@ -1,0 +1,56 @@
+!------------------------------------------------------------------------------
+! c o l o r -  s e t t i n g s
+
+*background: #000000
+*foreground: #AAAAAA
+
+! Default
+! 0: black
+*color0:  #000000
+*color8:  #000000
+! 1: red
+*color1:  #ff5555
+*color9:  #ff5555
+! 2: green
+*color2:  #55ff55
+*color10: #55ff55
+! 3: yellow
+*color3:  #d0d293
+*color11: #d0d293
+! 4: blue
+*color4:  #5555ff
+*color12: #5555ff
+! 5: magenta
+*color5:  #ff55ff
+*color13: #ff55ff
+! 6: cyan
+*color6:  #00aaaa
+*color14: #00aaaa
+! 7: white
+*color7:  #aaaaaa
+*color15: #aaaaaa
+
+!------------------------------------------------------------------------------
+! u r x v t
+
+URxvt*geometry:        112x22
+URxvt*termName:        rxvt-unicode-256color
+URxvt.color12:         rgb:5c/5c/ff
+URxvt.imLocale:        en_US.UTF-8
+URxvt.termName:        rxvt-unicode-256color
+urxvt*shading:         10
+urxvt*transparent:     true
+URxvt*font:            xft:Inconsolata for Powerline:size=5,      \
+                       xft:Anonymous Pro for Powerline:size=5,    \
+                       xft:Arimo for Powerline:size=5,            \
+                       xft:ClearlyU Alternate Glyphs:size=5,      \
+                       xft:Cousine for Powerline:size=5,          \
+                       xft:DejaVu Sans Mono for Powerline:size=5, \
+                       xft:Droid Sans Mono for Powerline:size=5,  \
+                       xft:Fira Mono for Powerline:size=5
+URxvt*background:      #000000
+URxvt*scrollBar:       false
+URxvt*scrollBar_right: true
+URxvt*scrollColor:     #000000
+URxvt*urlLauncher:     firefox
+*visualBell: True

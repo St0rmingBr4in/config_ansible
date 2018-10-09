@@ -1,0 +1,28 @@
+---
+
+- name: Install X11
+  pacman: name={{item}} update_cache=yes state=present
+  with_items:
+    - xorg-xinit
+    - xorg-server
+    - lightdm
+    - i3-wm
+    - dmenu
+    - rxvt-unicode
+
+- user:
+    name: aur_builder
+    group: wheel
+- lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- aur: name=aurman use=makepkg skip_installed=true
+  become: yes
+  become_user: aur_builder
+
+- aur:
+    name:
+      - otf-inconsolata-powerline-git

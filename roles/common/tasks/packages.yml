@@ -1,25 +1,9 @@
 ---
 
-- name: Install common tools (Debian)
-  when: ansible_distribution == 'Debian'
-  apt: name={{item}} update_cache=yes  state=present
-  with_items:
-    - htop
-    - most
-    - tree
-    - zsh
-    - vim
-    - tcpdump
-    - curl
-    - screen
-    - git
-
-- name: Install common tools (Archlinux)
-  when: ansible_distribution == 'Archlinux'
+- name: Install common tools
   pacman: name={{item}} update_cache=yes state=present
   with_items:
     - htop
-    - most
     - tree
     - zsh
     - vim
@@ -27,8 +11,3 @@
     - curl
     - screen
     - git
-
-- name: Install host specific packages (Debian)
-  when: ansible_distribution == 'Debian' and host_specific_packages is defined
-  apt: name={{ item }} state=present
-  with_items: "{{ host_specific_packages|default([]) }}"
