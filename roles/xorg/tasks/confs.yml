@@ -1,7 +1,13 @@
 ---
 
 - name: Xdefaults
-  copy: src=Xdefaults dest={{ user.home }}/.Xdefaults
+  copy:
+    src: Xdefaults
+    dest: "{{ user.home }}/.Xdefaults"
+    owner: "{{ user.name }}"
 
 - name: xinitrc
-  copy: src=xinitrc dest={{ user.home }}/.xinitrc
+  copy:
+    src: xinitrc
+    dest: "{{ user.home }}/.xinitrc"
+    owner: "{{ user.name }}"

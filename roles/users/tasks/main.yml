@@ -8,4 +8,8 @@
     home={{ user.home }}
     password={{ user.password }}
 
-#- name: Add ssh keys
+- lineinfile:
+    path: /etc/sudoers.d/11-wheel-group
+    line: '%wheel ALL=(ALL) ALL'
+    create: yes
+    validate: 'visudo -cf %s'

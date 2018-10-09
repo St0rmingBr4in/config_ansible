@@ -11,3 +11,46 @@
     - curl
     - screen
     - git
+    - ansible
+
+- user:
+    name: aurbuilder
+    group: wheel
+
+- lineinfile:
+    path: /etc/sudoers.d/12-install-aurbuilder
+    line: 'aurbuilder ALL=(ALL) NOPASSWD: ALL'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- aur:
+    use: makepkg
+    name:
+      - aurman
+      - trizen
+    skip_pgp_check: yes
+  become: yes
+  become_user: aurbuilder
+
+#- name: Check aurman installed
+#  command: pacman -Qs aurman
+#  register: aurman_check
+#  ignore_errors: True
+#
+#- name: Install aurman
+#  script: install_aur_pkg.sh aurman
+#  become: yes
+#  become_user: aurbuilder
+#  when: aurman_check.rc == 1
+#
+#- name: Check ansible-aur-git installed
+#  command: pacman -Qs ansible-aur-git
+#  register: ansibleaurgit_check
+#  ignore_errors: True
+#  
+#- name: Install ansible-aur-git
+#  script: install_aur_pkg.sh ansible-aur-git
+#  become: yes
+#  become_user: aurbuilder
+#  when: ansibleaurgit_check.rc == 1
+

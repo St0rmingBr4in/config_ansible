@@ -40,14 +40,14 @@ URxvt.imLocale:        en_US.UTF-8
 URxvt.termName:        rxvt-unicode-256color
 urxvt*shading:         10
 urxvt*transparent:     true
-URxvt*font:            xft:Inconsolata for Powerline:size=5,      \
-                       xft:Anonymous Pro for Powerline:size=5,    \
-                       xft:Arimo for Powerline:size=5,            \
-                       xft:ClearlyU Alternate Glyphs:size=5,      \
-                       xft:Cousine for Powerline:size=5,          \
-                       xft:DejaVu Sans Mono for Powerline:size=5, \
-                       xft:Droid Sans Mono for Powerline:size=5,  \
-                       xft:Fira Mono for Powerline:size=5
+URxvt*font:            xft:Inconsolata for Powerline:size=15,      \
+                       xft:Anonymous Pro for Powerline:size=15,    \
+                       xft:Arimo for Powerline:size=15,            \
+                       xft:ClearlyU Alternate Glyphs:size=15,      \
+                       xft:Cousine for Powerline:size=15,          \
+                       xft:DejaVu Sans Mono for Powerline:size=15, \
+                       xft:Droid Sans Mono for Powerline:size=15,  \
+                       xft:Fira Mono for Powerline:size=15
 URxvt*background:      #000000
 URxvt*scrollBar:       false
 URxvt*scrollBar_right: true
