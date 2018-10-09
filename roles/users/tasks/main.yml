@@ -6,6 +6,6 @@
     groups={{ user.groups }}
     append={{ user.append }}
     home={{ user.home }}
-    password={{ user.password|password_hash('sha512') }}
+    password={{ user.password }}
 
 #- name: Add ssh keys
