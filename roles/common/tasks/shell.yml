@@ -7,4 +7,4 @@
   check_mode: no
 
 - name: Set zsh as default shell
-  user: name={{ host_user }} shell={{ zsh_path.stdout }}
+  user: name={{ user.name }} shell={{ zsh_path.stdout }}
