@@ -4,3 +4,6 @@
   lineinfile: dest=/etc/ssh/sshd_config regexp=PasswordAuthentication line="PasswordAuthentication no"
   when: authorize_ssh_password is not defined or authorize_ssh_password == False
   notify: restart sshd
+
+- name: enable sshd
+  service: name=sshd enabled=yes

@@ -1,3 +1,18 @@
-- import_playbook: config/common.yml
-- import_playbook: config/docker.yml
-- import_playbook: config/xorg.yml
+- hosts: all
+  gather_facts: no
+  roles:
+    - bootstrap
+
+- hosts: laptop
+  roles:
+    - { role: common, tags: ['common'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: users, tags: ['users'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
+    - { role: xorg, tags: ['xorg'] }
+    - { role: lightdm, tags: ['lightdm'] }
+    - { role: cups, tags: ['cups'] }
+    - { role: steam, tags: ['steam'] }
+    - { role: latex, tags: ['latex'] }
+    - { role: spotify, tags: ['spotify'] }

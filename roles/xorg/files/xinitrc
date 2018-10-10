@@ -1,8 +1,5 @@
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export TERMINAL=lxterminal
-ibus-daemon &
 sh ~/.fehbg &
 dunst &
+xbindkeys
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 exec i3

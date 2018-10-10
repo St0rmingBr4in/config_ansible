@@ -1,4 +1,0 @@
-
-- hosts: docker
-  roles:
-    - { role: docker, tags: ['docker'] }

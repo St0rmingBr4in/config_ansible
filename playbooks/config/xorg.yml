@@ -1,3 +1,0 @@
-- hosts: xorg
-  roles:
-    - { role: xorg, tags: ['xorg'] }

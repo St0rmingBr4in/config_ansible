@@ -11,3 +11,15 @@
     src: xinitrc
     dest: "{{ user.home }}/.xinitrc"
     owner: "{{ user.name }}"
+
+- name: i3config
+  copy:
+    src: i3config
+    dest: "{{ user.home }}/.config/i3/config"
+    owner: "{{ user.name }}"
+
+- name: xbindkeysrc
+  copy:
+    src: xbindkeysrc
+    dest: "{{ user.home }}/.xbindkeysrc"
+    owner: "{{ user.name }}"

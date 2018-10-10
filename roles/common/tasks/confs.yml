@@ -18,3 +18,7 @@
     dest: "{{ user.home }}/.gitconfig"
     owner: "{{ user.name }}"
 
+- name: pacman.conf
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf

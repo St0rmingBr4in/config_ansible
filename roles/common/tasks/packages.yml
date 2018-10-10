@@ -1,17 +1,21 @@
 ---
 
 - name: Install common tools
-  pacman: name={{item}} update_cache=yes state=present
-  with_items:
-    - htop
-    - tree
-    - zsh
-    - vim
-    - tcpdump
-    - curl
-    - screen
-    - git
-    - ansible
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - htop
+      - tree
+      - zsh
+      - vim
+      - tcpdump
+      - curl
+      - screen
+      - git
+      - ansible
+      - pkgfile
+      - mlocate
 
 - user:
     name: aurbuilder
@@ -32,25 +36,10 @@
   become: yes
   become_user: aurbuilder
 
-#- name: Check aurman installed
-#  command: pacman -Qs aurman
-#  register: aurman_check
-#  ignore_errors: True
-#
-#- name: Install aurman
-#  script: install_aur_pkg.sh aurman
-#  become: yes
-#  become_user: aurbuilder
-#  when: aurman_check.rc == 1
-#
-#- name: Check ansible-aur-git installed
-#  command: pacman -Qs ansible-aur-git
-#  register: ansibleaurgit_check
-#  ignore_errors: True
-#  
-#- name: Install ansible-aur-git
-#  script: install_aur_pkg.sh ansible-aur-git
-#  become: yes
-#  become_user: aurbuilder
-#  when: ansibleaurgit_check.rc == 1
-
+- aur:
+    use: trizen
+    name:
+      - oh-my-zsh-git
+      - google-chrome
+  become: yes
+  become_user: aurbuilder
