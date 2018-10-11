@@ -1,5 +1,6 @@
 user:
   name: st0rmingbr4in
+  group: st0rmingbr4in
   groups: wheel
   shell: /bin/zsh
   home: /home/st0rmingbr4in
@@ -17,3 +18,7 @@ user:
 
 wifi:
   interface: wlp3s0
+
+ssh:
+  port: 22
+  enable_sshd: True

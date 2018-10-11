@@ -5,9 +5,17 @@
     update_cache: yes
     state: present
     name:
-      - dmenu
-      - feh
-      - firefox
+      - xorg-server
+      - xorg-xinit
+      - xbindkeys
+      - xorg-xbacklight
+      - xsel
+
+- name: Install i3
+  pacman:
+    update_cache: yes
+    state: present
+    name:
       - i3-wm
       - i3lock
       - i3status
@@ -16,19 +24,10 @@
       - pulseaudio
       - rofi
       - rxvt-unicode
-      - scrot
-      - thunderbird
-      - xbindkeys
-      - xorg-server
-      - xorg-xinit
-      - xsel
-      - zathura
-      - zathura-pdf-poppler
 
 - aur:
     use: trizen
     name:
       - otf-inconsolata-powerline-git
-      - slack-desktop
   become: yes
   become_user: aurbuilder

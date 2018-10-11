@@ -15,4 +15,5 @@
     - { role: cups, tags: ['cups'] }
     - { role: steam, tags: ['steam'] }
     - { role: latex, tags: ['latex'] }
-    - { role: spotify, tags: ['spotify'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: graphical_programs, tags: ['graphical_programs'] }

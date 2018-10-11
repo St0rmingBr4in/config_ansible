@@ -10,6 +10,8 @@
       - gutenprint
       - hplip
       - gtk3-print-backends
+      - gscan2pdf
+      - sane
 
 - name: Add a print admin group
   group: name=printadmin state=present

@@ -1,0 +1,21 @@
+- name: Install graphical utilities
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - feh
+      - firefox
+      - scrot
+      - thunderbird
+      - zathura
+      - zathura-pdf-poppler
+      - gimp
+      - youtube-dl
+
+- aur:
+    use: trizen
+    name:
+      - slack-desktop
+      - spotify
+  become: yes
+  become_user: aurbuilder

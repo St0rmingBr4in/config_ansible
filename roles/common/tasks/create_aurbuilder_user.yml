@@ -1,0 +1,25 @@
+- user:
+    name: aurbuilder
+    group: wheel
+    home: /home/aurbuilder
+
+- file:
+    path: /home/aurbuilder/.ansible/tmp
+    state: directory
+    owner: aurbuilder
+
+- lineinfile:
+    path: /etc/sudoers.d/12-install-aurbuilder
+    line: 'aurbuilder ALL=(ALL) NOPASSWD: ALL'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- aur:
+    use: makepkg
+    name:
+      - aurman
+      - trizen
+    skip_pgp_check: yes
+  become: yes
+  become_user: aurbuilder
+

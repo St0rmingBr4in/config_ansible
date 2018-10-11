@@ -1,0 +1,15 @@
+- name: install texlive core
+  pacman:
+    name:
+      - rubber
+      - texlive-core
+      - texlive-latexextra
+    update_cache: yes
+
+- name: install latex dependencies
+  aur:
+    use: trizen
+    name:
+      - pandoc-bin
+  become: yes
+  become_user: aurbuilder

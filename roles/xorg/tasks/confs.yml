@@ -11,6 +11,7 @@
     src: xinitrc
     dest: "{{ user.home }}/.xinitrc"
     owner: "{{ user.name }}"
+    mode: a+x
 
 - name: i3config
   copy:
