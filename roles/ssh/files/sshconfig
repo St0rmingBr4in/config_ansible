@@ -1,0 +1,9 @@
+Host *.cri.epita.fr *.cri.epita.net
+    ProxyCommand ssh -p 22424 st0rmingbr4in@cri.epita.fr nc %h 22
+
+Host *
+    User root
+    IdentityFile ~/.ssh/cri
+    IdentityFile ~/.ssh/acu
+    IdentityFile ~/.ssh/other
+    AddKeysToAgent  yes
