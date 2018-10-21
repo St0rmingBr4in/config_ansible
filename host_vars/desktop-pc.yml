@@ -20,6 +20,8 @@ user:
 wifi:
   interface: wlp4s0
 
+  #TODO: enable dhcpcd on wired interface
+
 timezone:
   region: Europe
   city: Paris

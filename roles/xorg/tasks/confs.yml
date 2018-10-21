@@ -13,10 +13,17 @@
     owner: "{{ user.name }}"
     mode: a+x
 
+- name: Create config directory
+  file:
+    path: "{{ user.home }}/.config"
+    state: directory
+    owner: "{{ user.name }}"
+
 - name: Create i3config directory
   file:
     path: "{{ user.home }}/.config/i3"
     state: directory
+    owner: "{{ user.name }}"
 
 - name: i3config
   copy:
