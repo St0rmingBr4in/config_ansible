@@ -15,9 +15,9 @@
 
 - file:
     path: "{{ user.home }}/.vim/pack/git-plugins/start"
-    state: present
+    state: directory
     owner: "{{ user.name }}"
 
 - git:
-    clone: https://github.com/w0rp/ale.git
-    dir: "{{ user.home }}/.vim/pack/git-plugins/start/ale"
+    repo: https://github.com/w0rp/ale.git
+    dest: "{{ user.home }}/.vim/pack/git-plugins/start/ale"

@@ -13,6 +13,11 @@
     owner: "{{ user.name }}"
     mode: a+x
 
+- name: Create i3config directory
+  file:
+    path: "{{ user.home }}/.config/i3"
+    state: directory
+
 - name: i3config
   copy:
     src: i3config
