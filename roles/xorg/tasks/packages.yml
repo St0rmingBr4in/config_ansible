@@ -24,6 +24,9 @@
       - pulseaudio
       - rofi
       - rxvt-unicode
+      - xss-lock
+      - xorg-xrandr
+      - arandr
 
 - aur:
     use: trizen

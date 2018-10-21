@@ -1,8 +1,0 @@
----
-
-- name: Install steam
-  pacman:
-    update_cache: yes
-    state: present
-    name:
-      - steam

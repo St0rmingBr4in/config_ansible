@@ -1,0 +1,4 @@
+- name: Install ada compiler
+  pacman:
+    name:
+      - gcc-ada

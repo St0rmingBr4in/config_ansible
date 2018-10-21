@@ -1,7 +1,8 @@
 user:
   name: st0rmingbr4in
   group: st0rmingbr4in
-  groups: wheel
+  groups:
+    - wheel
   shell: /bin/zsh
   home: /home/st0rmingbr4in
   password: !vault |

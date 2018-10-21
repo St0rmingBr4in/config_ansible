@@ -1,0 +1,4 @@
+- pacman:
+    name:
+      - mono
+    update_cache: yes

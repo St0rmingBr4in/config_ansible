@@ -8,7 +8,6 @@
       - htop
       - tree
       - zsh
-      - vim
       - tcpdump
       - curl
       - screen
@@ -17,11 +16,12 @@
       - pkgfile
       - mlocate
       - bind-tools
+      - unzip
 
 - aur:
     use: trizen
     name:
       - oh-my-zsh-git
-      - google-chrome
+      - etcher-cli-bin
   become: yes
   become_user: aurbuilder

@@ -11,11 +11,17 @@
       - zathura-pdf-poppler
       - gimp
       - youtube-dl
+      - gparted
+      - evince
+      - virt-manager
+      - qemu
+      - android-file-transfer
 
 - aur:
     use: trizen
     name:
       - slack-desktop
       - spotify
+      - google-chrome
   become: yes
   become_user: aurbuilder

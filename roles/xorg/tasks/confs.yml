@@ -24,3 +24,9 @@
     src: xbindkeysrc
     dest: "{{ user.home }}/.xbindkeysrc"
     owner: "{{ user.name }}"
+
+- name: xprofile
+  copy:
+    src: xprofile
+    dest: "{{ user.home }}/.xprofile"
+    owner: "{{ user.name }}"

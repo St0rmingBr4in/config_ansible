@@ -13,7 +13,11 @@
     - { role: xorg, tags: ['xorg'] }
     - { role: lightdm, tags: ['lightdm'] }
     - { role: cups, tags: ['cups'] }
-    - { role: steam, tags: ['steam'] }
+    - { role: gaming, tags: ['gaming'] }
     - { role: latex, tags: ['latex'] }
     - { role: ssh, tags: ['ssh'] }
+    - { role: vim, tags: ['vim'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: dev-ada, tags: ['dev-ada'] }
+    - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }

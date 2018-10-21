@@ -1,0 +1,15 @@
+---
+
+- name: Install steam
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - steam
+
+#- aur:
+#    use: trizen
+#    name:
+#      - discord # TODO: import pgp keys
+#  become: yes
+#  become_user: aurbuilder

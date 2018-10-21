@@ -1,0 +1,23 @@
+---
+
+- name: Install common tools
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - vim
+
+- name: vimrc
+  copy:
+    src: vimrc
+    dest: "{{ user.home }}/.vimrc"
+    owner: "{{ user.name }}"
+
+- file:
+    path: "{{ user.home }}/.vim/pack/git-plugins/start"
+    state: present
+    owner: "{{ user.name }}"
+
+- git:
+    clone: https://github.com/w0rp/ale.git
+    dir: "{{ user.home }}/.vim/pack/git-plugins/start/ale"

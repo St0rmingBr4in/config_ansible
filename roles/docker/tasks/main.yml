@@ -1,4 +1,11 @@
 - name: Install Docker
   package:
-    name=docker
+    name:
+      - docker
+      - docker-compose
 
+- name: Add user to group docker
+  user:
+    name: '{{ user.name }}'
+    groups: docker
+    append: yes

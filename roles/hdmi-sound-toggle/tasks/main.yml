@@ -1,0 +1,13 @@
+- copy:
+    src: hdmi_sound_toggle.sh
+    dest: /usr/local/bin/hdmi_sound_toggle.sh
+    mode: a+x
+
+- copy:
+    src: 99-hdmi_sound.rules
+    dest: /etc/udev/rules.d/99-hdmi_sound.rules
+
+- copy:
+    src: hdmi_sound_toggle.service
+    dest: /etc/systemd/system/hdmi_sound_toggle.service
+

@@ -1,11 +1,5 @@
 ---
 
-- name: vimrc
-  copy:
-    src: vimrc
-    dest: "{{ user.home }}/.vimrc"
-    owner: "{{ user.name }}"
-
 - name: zshrc
   copy:
     src: zshrc

@@ -1,0 +1,10 @@
+[Unit]
+Description=hdmi sound hotplug
+
+[Service]
+Type=simple
+RemainAfterExit=no
+ExecStart=/usr/local/bin/hdmi_sound_toggle.sh
+
+[Install]
+WantedBy=multi-user.target
