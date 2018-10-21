@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: no
+  roles:
+    - bootstrap
+
+- hosts: all
+  roles:
+    - { role: install, tags: ['install'] }
+#    - { role: bootloader, tags: ['bootloader'] }

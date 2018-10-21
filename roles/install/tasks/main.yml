@@ -1,0 +1,23 @@
+- name: Update the system clock
+  command: timedatectl set-ntp true
+
+- name: Select the mirrors
+  lineinfile:
+    path: /etc/pacman.d/mirrorlist
+    line: 'Server  =  http://archlinux.de-labrusse.fr/$repo/os/$arch'
+    insertbefore: BOF
+
+- name: Install the base packages
+  command: pacstrap /mnt base base-devel ansible vim openssh
+
+- name: Fstab
+  command: genfstab -U /mnt >> /mnt/etc/fstab
+
+- name: Copy install script
+  template:
+    src: install.sh
+    dest: /mnt/install.sh
+    mode: "a+x"
+
+- name: Chroot
+  command: arch-chroot /mnt /install.sh

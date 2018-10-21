@@ -21,3 +21,22 @@
     - { role: dev-ada, tags: ['dev-ada'] }
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
+
+- hosts: desktop
+  roles:
+    - { role: common, tags: ['common'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: users, tags: ['users'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
+    - { role: xorg, tags: ['xorg'] }
+    - { role: lightdm, tags: ['lightdm'] }
+    - { role: cups, tags: ['cups'] }
+    - { role: gaming, tags: ['gaming'] }
+    - { role: latex, tags: ['latex'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: vim, tags: ['vim'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: dev-ada, tags: ['dev-ada'] }
+    - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
+    - { role: graphical_programs, tags: ['graphical_programs'] }
