@@ -22,6 +22,8 @@ wifi:
 
   #TODO: enable dhcpcd on wired interface
 
+gpu: nvidia
+
 timezone:
   region: Europe
   city: Paris

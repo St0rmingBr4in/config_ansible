@@ -4,6 +4,14 @@
       - docker
       - docker-compose
 
+- name: Install nvidia-docker
+  aur:
+    name: nvidia-docker
+    use: trizen
+  become_user: aurbuilder
+  become: yes
+  when: gpu is defined and gpu == 'nvidia'
+
 - name: Add user to group docker
   user:
     name: '{{ user.name }}'

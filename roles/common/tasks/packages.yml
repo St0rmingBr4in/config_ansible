@@ -18,6 +18,15 @@
       - bind-tools
       - unzip
 
+- name: Install nvidia related pkgs
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - nvidia
+      - cuda
+  when: gpu is defined and gpu == 'nvidia'
+
 - aur:
     use: trizen
     name:
