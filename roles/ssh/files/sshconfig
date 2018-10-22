@@ -5,6 +5,9 @@ Host *.lab.assistants.epita.fr
     #ProxyCommand ssh doche_j@10.224.2.42 nc %h 22
     ProxyCommand ssh doche_j@gate.assistants.epita.fr nc %h 22
 
+Host cri
+    ProxyCommand ssh -p 22424 st0rmingbr4in@cri.epita.fr
+
 Host *
     User root
     IdentityFile ~/.ssh/cri

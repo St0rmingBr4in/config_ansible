@@ -17,6 +17,7 @@
       - mlocate
       - bind-tools
       - unzip
+      - wget
 
 - name: Install nvidia related pkgs
   pacman:

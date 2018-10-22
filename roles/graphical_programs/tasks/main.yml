@@ -16,6 +16,7 @@
       - virt-manager
       - qemu
       - android-file-transfer
+      - transmission-gtk
 
 - aur:
     use: trizen
