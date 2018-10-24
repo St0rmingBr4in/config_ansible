@@ -6,7 +6,22 @@ Host *.lab.assistants.epita.fr
     ProxyCommand ssh doche_j@gate.assistants.epita.fr nc %h 22
 
 Host cri
-    ProxyCommand ssh -p 22424 st0rmingbr4in@cri.epita.fr
+    Port 22424
+    HostName cri.epita.fr
+    User st0rmingbr4in
+    ForwardX11 yes
+
+Host acu
+    Port 22
+    #HostName gate.lab.assistants.epita.fr
+    HostName 10.224.2.42
+    User doche_j
+    ForwardX11 yes
+
+Host desktop-pc
+    HostName adf0.dyndns.org
+    User st0rmingbr4in
+    ForwardX11 yes
 
 Host *
     User root
@@ -15,3 +30,4 @@ Host *
     IdentityFile ~/.ssh/other
     AddKeysToAgent  yes
     ForwardAgent yes
+    ForwardX11 yes

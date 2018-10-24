@@ -17,6 +17,7 @@
       - qemu
       - android-file-transfer
       - transmission-gtk
+      - libreoffice-fresh
 
 - aur:
     use: trizen
