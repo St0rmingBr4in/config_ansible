@@ -8,7 +8,6 @@
       - xorg-server
       - xorg-xinit
       - xbindkeys
-      - xorg-xbacklight
       - xsel
 
 - name: Install i3
@@ -27,6 +26,7 @@
       - xss-lock
       - xorg-xrandr
       - arandr
+      - light
 
 - aur:
     use: trizen

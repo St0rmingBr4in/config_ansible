@@ -1,0 +1,13 @@
+- name: Install pkgs
+  pacman:
+    name:
+      - picocom
+      - screen
+      - arduino
+      - minicom
+
+- name: Add user to dialog group
+  user:
+    name: "{{ user.name }}"
+    group: uucp
+    append: yes

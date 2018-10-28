@@ -1,0 +1,7 @@
+- name: Install pkgs
+  pacman:
+    update_cache: yes
+    name:
+      - arm-none-eabi-gcc
+      - arm-none-eabi-binutils
+      - stlink

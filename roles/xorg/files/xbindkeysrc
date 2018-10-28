@@ -11,10 +11,10 @@
    XF86AudioMute
 
 # Increase backlight
-"xbacklight -inc 10"
+"light -A 10"
    XF86MonBrightnessUp
 
 # Decrease backlight
-"xbacklight -dec 10"
+"light -U 10"
    XF86MonBrightnessDown
 

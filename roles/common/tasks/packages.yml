@@ -18,6 +18,7 @@
       - bind-tools
       - unzip
       - wget
+      - traceroute
 
 - name: Install nvidia related pkgs
   pacman:
