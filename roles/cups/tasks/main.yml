@@ -3,14 +3,14 @@
   pacman:
     state: present
     name:
-      - ghostscript
-      - gsfonts
       - cups
       - cups-pdf
+      - ghostscript
+      - gscan2pdf
+      - gsfonts
+      - gtk3-print-backends
       - gutenprint
       - hplip
-      - gtk3-print-backends
-      - gscan2pdf
       - sane
 
 - name: Add a print admin group

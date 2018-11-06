@@ -1,10 +1,10 @@
 - name: Install pkgs
   pacman:
     name:
-      - picocom
-      - screen
       - arduino
       - minicom
+      - picocom
+      - screen
 
 - name: Add user to dialog group
   user:

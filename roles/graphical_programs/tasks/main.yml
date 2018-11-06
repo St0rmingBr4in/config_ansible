@@ -3,27 +3,27 @@
     update_cache: yes
     state: present
     name:
+      - android-file-transfer
+      - evince
       - feh
       - firefox
+      - gimp
+      - gparted
+      - libreoffice-fresh
+      - qemu
       - scrot
       - thunderbird
+      - transmission-gtk
+      - virt-manager
+      - youtube-dl
       - zathura
       - zathura-pdf-poppler
-      - gimp
-      - youtube-dl
-      - gparted
-      - evince
-      - virt-manager
-      - qemu
-      - android-file-transfer
-      - transmission-gtk
-      - libreoffice-fresh
 
 - aur:
     use: trizen
     name:
+      - google-chrome
       - slack-desktop
       - spotify
-      - google-chrome
   become: yes
   become_user: aurbuilder

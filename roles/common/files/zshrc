@@ -44,6 +44,7 @@ alias df='df -h'
 alias reload="source ~/.zshrc"
 alias sr="ssh -l root"
 alias upgradable="apt update && apt list --upgradable"
+alias bfsgrep="( find . -maxdepth 1 -print ; find . -mindepth 2 -print ) | xargs -n 50 -exec grep"
 
 autoload -U compinit colors && compinit && colors
 

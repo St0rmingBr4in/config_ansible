@@ -5,34 +5,36 @@
     update_cache: yes
     state: present
     name:
-      - htop
-      - tree
-      - zsh
-      - tcpdump
-      - curl
-      - screen
-      - git
       - ansible
-      - pkgfile
-      - mlocate
       - bind-tools
+      - curl
+      - exfat-utils
+      - git
+      - htop
+      - mlocate
+      - pkgfile
+      - screen
+      - tcpdump
+      - traceroute
+      - tree
       - unzip
       - wget
-      - traceroute
+      - zsh
 
 - name: Install nvidia related pkgs
   pacman:
     update_cache: yes
     state: present
     name:
-      - nvidia
       - cuda
+      - nvidia
   when: gpu is defined and gpu == 'nvidia'
 
 - aur:
     use: trizen
     name:
-      - oh-my-zsh-git
       - etcher-cli-bin
+      - manly
+      - oh-my-zsh-git
   become: yes
   become_user: aurbuilder

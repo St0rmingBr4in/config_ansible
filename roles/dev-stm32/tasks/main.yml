@@ -2,6 +2,6 @@
   pacman:
     update_cache: yes
     name:
-      - arm-none-eabi-gcc
       - arm-none-eabi-binutils
+      - arm-none-eabi-gcc
       - stlink

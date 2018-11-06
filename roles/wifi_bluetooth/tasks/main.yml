@@ -2,13 +2,13 @@
   pacman:
     name:
       - bluez
+      - bluez-libs
       - bluez-utils
-      - wpa_supplicant
       - dialog
       - pulseaudio-alsa
       - pulseaudio-bluetooth
-      - bluez-libs
       - wpa_actiond
+      - wpa_supplicant
     update_cache: yes
     state: present
   

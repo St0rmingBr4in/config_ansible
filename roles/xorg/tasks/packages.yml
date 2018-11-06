@@ -5,9 +5,9 @@
     update_cache: yes
     state: present
     name:
+      - xbindkeys
       - xorg-server
       - xorg-xinit
-      - xbindkeys
       - xsel
 
 - name: Install i3
@@ -15,18 +15,18 @@
     update_cache: yes
     state: present
     name:
+      - arandr
       - i3-wm
       - i3lock
       - i3status
+      - light
       - noto-fonts
       - pavucontrol
       - pulseaudio
       - rofi
       - rxvt-unicode
-      - xss-lock
       - xorg-xrandr
-      - arandr
-      - light
+      - xss-lock
 
 - aur:
     use: trizen
