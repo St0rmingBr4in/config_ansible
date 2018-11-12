@@ -13,8 +13,8 @@ Host cri
 
 Host acu
     Port 22
-    #HostName gate.lab.assistants.epita.fr
-    HostName 10.224.2.42
+    HostName ssh.acu.epita.fr
+    #HostName 10.224.2.42
     User doche_j
     ForwardX11 yes
 
@@ -31,3 +31,4 @@ Host *
     AddKeysToAgent  yes
     ForwardAgent yes
     ForwardX11 yes
+    DynamicForward 8080

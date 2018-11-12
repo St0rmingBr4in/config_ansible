@@ -9,17 +9,22 @@
       - bind-tools
       - curl
       - exfat-utils
+      - gdb
       - git
       - htop
       - mlocate
       - pkgfile
+      - rsync
       - screen
       - tcpdump
       - traceroute
       - tree
       - unzip
+      - valgrind
       - wget
       - zsh
+      - python-virtualenv
+      - proxychains-ng
 
 - name: Install nvidia related pkgs
   pacman:
