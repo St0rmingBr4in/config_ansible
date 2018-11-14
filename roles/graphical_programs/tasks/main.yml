@@ -18,6 +18,7 @@
       - youtube-dl
       - zathura
       - zathura-pdf-poppler
+      - vlc
 
 - aur:
     use: trizen

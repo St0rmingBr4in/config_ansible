@@ -1,0 +1,13 @@
+- name: Install download tools
+  pacman:
+    name:
+      - transmission-gtk
+
+- name: Install download tools (AUR)
+  aur:
+    use: trizen
+    name:
+      - megasync
+      - windscribe-cli
+  become: yes
+  become_user: aurbuilder

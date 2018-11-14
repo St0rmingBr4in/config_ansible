@@ -32,3 +32,4 @@ Host *
     ForwardAgent yes
     ForwardX11 yes
     DynamicForward 8080
+    Compression yes
