@@ -13,7 +13,10 @@
       - git
       - htop
       - mlocate
+      - ntfs-3g
       - pkgfile
+      - proxychains-ng
+      - python-virtualenv
       - rsync
       - screen
       - tcpdump
@@ -23,8 +26,6 @@
       - valgrind
       - wget
       - zsh
-      - python-virtualenv
-      - proxychains-ng
 
 - name: Install nvidia related pkgs
   pacman:
