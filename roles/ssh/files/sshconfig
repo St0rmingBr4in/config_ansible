@@ -5,6 +5,10 @@ Host *.lab.assistants.epita.fr
     #ProxyCommand ssh doche_j@10.224.2.42 nc %h 22
     ProxyCommand ssh doche_j@gate.assistants.epita.fr nc %h 22
 
+Host exam-git.pie.cri.epita.net
+    User git
+    IdentityFile ~/.ssh/acu
+
 Host cri
     Port 22424
     HostName cri.epita.fr
@@ -25,8 +29,8 @@ Host desktop-pc
 
 Host *
     User root
-    IdentityFile ~/.ssh/cri
     IdentityFile ~/.ssh/acu
+    IdentityFile ~/.ssh/cri
     IdentityFile ~/.ssh/other
     AddKeysToAgent  yes
     ForwardAgent yes

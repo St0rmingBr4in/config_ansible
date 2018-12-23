@@ -26,6 +26,11 @@
       - valgrind
       - wget
       - zsh
+      - unrar
+      - gnu-netcat
+      - dosfstools
+      - ntfsprogs
+      - p7zip
 
 - name: Install nvidia related pkgs
   pacman:

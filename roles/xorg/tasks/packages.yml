@@ -19,7 +19,6 @@
       - i3-wm
       - i3lock
       - i3status
-      - light
       - noto-fonts
       - pavucontrol
       - pulseaudio
@@ -31,6 +30,7 @@
 - aur:
     use: trizen
     name:
+      - light
       - otf-inconsolata-powerline-git
   become: yes
   become_user: aurbuilder

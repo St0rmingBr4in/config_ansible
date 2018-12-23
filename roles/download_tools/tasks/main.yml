@@ -9,5 +9,6 @@
     name:
       - megasync
       - windscribe-cli
+      - webtorrent-desktop-bin
   become: yes
   become_user: aurbuilder

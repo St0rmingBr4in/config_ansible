@@ -30,6 +30,8 @@
 *color7:  #aaaaaa
 *color15: #aaaaaa
 
+xterm*faceName:    xft:Incosolata:size=13
+
 !------------------------------------------------------------------------------
 ! u r x v t
 
@@ -53,4 +55,4 @@ URxvt*scrollBar:       false
 URxvt*scrollBar_right: true
 URxvt*scrollColor:     #000000
 URxvt*urlLauncher:     firefox
-*visualBell: True
+visualBell: False

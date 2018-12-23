@@ -20,6 +20,14 @@
       - zathura-pdf-poppler
       - vlc
 
+- name: Install git instaweb prerequisites
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - perl-cgi
+      - lighttpd
+
 - aur:
     use: trizen
     name:

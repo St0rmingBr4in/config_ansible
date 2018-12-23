@@ -4,13 +4,7 @@ export HISTSIZE=4096
 export LANG=en_US.UTF-8
 export SAVEHIST=4096
 
-if command most 2> /dev/null
-then
-    export PAGER="most"
-elif command less 2> /dev/null
-then
-    export PAGER="less"
-fi
+export PAGER="less"
 
 export LESSCHARSET="utf-8"
 export LESS_TERMCAP_mb=$(printf "\e[1;37m")
@@ -29,13 +23,7 @@ setopt sh_word_split # Do not quote expanded vars
 unsetopt beep notify
 
 
-if [ "`uname`" = "FreeBSD" ]; then
-  export CLICOLOR="YES"
-  export LSCOLORS="ExGxFxdxCxDxhbadExEx"
-  alias ls='ls -I'
-elif [ "`uname`" = "Linux" ]; then
-  alias ls='ls --color=auto -F -h'
-fi
+alias ls='ls --color=auto -F -h'
 alias ll='ls -l'
 alias l='ll'
 alias la='ls -la'
