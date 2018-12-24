@@ -31,6 +31,7 @@
       - dosfstools
       - ntfsprogs
       - p7zip
+      - parallel
 
 - name: Install nvidia related pkgs
   pacman:
