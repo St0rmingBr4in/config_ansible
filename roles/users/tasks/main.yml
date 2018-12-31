@@ -1,5 +1,10 @@
 ---
 
+- pacman:
+    update-cache: yes
+    name:
+      - sudo
+
 - name: Create user
   user:
     name: "{{ user.name }}"

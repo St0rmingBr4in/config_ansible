@@ -6,14 +6,20 @@
     state: present
     name:
       - ansible
+      - base-devel
       - bind-tools
       - curl
+      - dosfstools
       - exfat-utils
       - gdb
       - git
+      - gnu-netcat
       - htop
       - mlocate
       - ntfs-3g
+      - ntfsprogs
+      - p7zip
+      - parallel
       - pkgfile
       - proxychains-ng
       - python-virtualenv
@@ -22,16 +28,11 @@
       - tcpdump
       - traceroute
       - tree
+      - unrar
       - unzip
       - valgrind
       - wget
       - zsh
-      - unrar
-      - gnu-netcat
-      - dosfstools
-      - ntfsprogs
-      - p7zip
-      - parallel
 
 - name: Install nvidia related pkgs
   pacman:
