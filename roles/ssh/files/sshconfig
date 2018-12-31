@@ -32,6 +32,7 @@ Host *
     IdentityFile ~/.ssh/acu
     IdentityFile ~/.ssh/cri
     IdentityFile ~/.ssh/other
+    IdentityFile ~/.ssh/id_rsa
     AddKeysToAgent  yes
     ForwardAgent yes
     ForwardX11 yes
