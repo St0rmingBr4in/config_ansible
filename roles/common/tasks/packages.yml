@@ -11,6 +11,7 @@
       - curl
       - dosfstools
       - exfat-utils
+      - efibootmgr
       - gdb
       - git
       - gnu-netcat
