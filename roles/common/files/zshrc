@@ -6,6 +6,8 @@ export SAVEHIST=4096
 
 export PAGER="less"
 
+#stty icrnl onlcr
+
 export LESSCHARSET="utf-8"
 export LESS_TERMCAP_mb=$(printf "\e[1;37m")
 export LESS_TERMCAP_md=$(printf "\e[1;31m")

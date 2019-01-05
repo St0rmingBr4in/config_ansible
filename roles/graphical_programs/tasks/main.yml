@@ -20,6 +20,15 @@
       - zathura-pdf-poppler
       - vlc
 
+- name: Install Thunar and dependencies
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - thunar
+      - ffmpegthumbnailer
+      - tumbler
+
 - name: Install git instaweb prerequisites
   pacman:
     update_cache: yes
