@@ -7,11 +7,12 @@
     name:
       - ansible
       - base-devel
+      - bat
       - bind-tools
       - curl
       - dosfstools
-      - exfat-utils
       - efibootmgr
+      - exfat-utils
       - gdb
       - git
       - gnu-netcat
@@ -19,6 +20,7 @@
       - mlocate
       - ntfs-3g
       - ntfsprogs
+      - opencl-headers
       - p7zip
       - parallel
       - pkgfile
