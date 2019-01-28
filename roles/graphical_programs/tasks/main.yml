@@ -37,7 +37,8 @@
       - perl-cgi
       - lighttpd
 
-- aur:
+- name: Install Chrome Slack and spotify
+  aur:
     use: trizen
     name:
       - google-chrome
@@ -45,3 +46,9 @@
       - spotify
   become: yes
   become_user: aurbuilder
+
+- name: Configs
+  copy:
+    src: tridactylrc
+    dest: "{{ user.home }}/.tridactylrc"
+    owner: "{{ user.name }}"

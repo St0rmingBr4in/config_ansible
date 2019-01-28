@@ -1,0 +1,8 @@
+- name: Install yocto dependencies
+  pacman:
+    update_cache: yes
+    name:
+      - chrpath
+      - cpio
+      - diffstat
+      - rpcsvc-proto
