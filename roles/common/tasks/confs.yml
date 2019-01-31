@@ -16,3 +16,9 @@
   copy:
     src: pacman.conf
     dest: /etc/pacman.conf
+
+- name: disable compression in makepkg
+  lineinfile: dest=/etc/makepkg.conf
+              regexp="^PKGEXT="
+              state=present
+              line="PKGEXT='.pkg.tar'"
