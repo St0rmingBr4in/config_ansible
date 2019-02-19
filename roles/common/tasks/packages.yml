@@ -50,7 +50,7 @@
     use: trizen
     name:
       - etcher-cli-bin
-      - manly
+      - manly-git
       - oh-my-zsh-git
   become: yes
   become_user: aurbuilder
