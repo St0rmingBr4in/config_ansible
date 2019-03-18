@@ -25,6 +25,10 @@
     - { role: dev-arduino, tags: ['dev-arduino'] }
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
+    - { role: screensaver, tags: ['screensaver'] }
+    - { role: yubikey, tags: ['yubikey'] }
 
 - hosts: desktop
   roles:
@@ -44,6 +48,10 @@
     - { role: dev-ada, tags: ['dev-ada'] }
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
+    - { role: screensaver, tags: ['screensaver'] }
+    - { role: yubikey, tags: ['yubikey'] }
 
 - hosts: cri
   roles:

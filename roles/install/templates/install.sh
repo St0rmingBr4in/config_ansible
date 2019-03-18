@@ -12,8 +12,10 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf #TODO: Move to ansible
 
 # Network configuration
-echo "{{ ansible_hostname }}" > /etc/hostname #XXX: Working ? #TODO: Move to ansible
+echo "{{ hostname }}" > /etc/hostname #TODO: Move to ansible
 #hosts #TODO: Move to ansible
+
+#/etc/mkinitcpio.conf
 
 # Initramfs
 mkinitcpio -p linux

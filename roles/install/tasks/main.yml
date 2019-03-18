@@ -7,10 +7,17 @@
     line: 'Server  =  http://archlinux.de-labrusse.fr/$repo/os/$arch'
     insertbefore: BOF
 
+- name: Update archlinux-keyring
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - archlinux-keyring
+
 - name: Install the base packages
   command: pacstrap /mnt base base-devel ansible vim openssh
 
-- name: Fstab # TODO : not working ?
+- name: Fstab # TODO : not working!!!
   command: genfstab -U /mnt >> /mnt/etc/fstab
 
 - name: Copy install script

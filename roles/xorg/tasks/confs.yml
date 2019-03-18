@@ -31,6 +31,18 @@
     dest: "{{ user.home }}/.config/i3/config"
     owner: "{{ user.name }}"
 
+- name: Create compton directory
+  file:
+    path: "{{ user.home }}/.config/compton"
+    state: directory
+    owner: "{{ user.name }}"
+
+- name: compton
+  copy:
+    src: compton.conf
+    dest: "{{ user.home }}/.config/compton/compton.conf"
+    owner: "{{ user.name }}"
+
 - name: xbindkeysrc
   copy:
     src: xbindkeysrc

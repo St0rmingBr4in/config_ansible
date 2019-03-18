@@ -1,3 +1,5 @@
+hostname: arista-doche
+
 user:
   name: st0rmingbr4in
   group: st0rmingbr4in
@@ -18,7 +20,7 @@ user:
           32616332306631626230643931306539383933396433653335636464343038393232
 
 wifi:
-  interface: wlp3s0
+  interface: wlp61s0
 
 gpu: intel
 

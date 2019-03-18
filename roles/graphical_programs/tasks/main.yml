@@ -43,7 +43,6 @@
     name:
       - google-chrome
       - slack-desktop
-      - spotify
   become: yes
   become_user: aurbuilder
 
