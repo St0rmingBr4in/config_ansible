@@ -36,6 +36,7 @@
       - valgrind
       - wget
       - zsh
+      - mosh
 
 - name: Install nvidia related pkgs
   pacman:
