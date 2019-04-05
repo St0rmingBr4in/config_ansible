@@ -1,0 +1,6 @@
+- pacman:
+    update_cache: yes
+    state: present
+    name:
+      - android-tools
+      - android-file-transfer

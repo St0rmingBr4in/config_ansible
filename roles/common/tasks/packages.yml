@@ -37,6 +37,7 @@
       - wget
       - zsh
       - mosh
+      - python-pip
 
 - name: Install nvidia related pkgs
   pacman:

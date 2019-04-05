@@ -36,10 +36,11 @@ xterm*faceName:    xft:Incosolata:size=13
 ! u r x v t
 
 URxvt*geometry:        112x22
-URxvt*termName:        rxvt-unicode-256color
+URxvt*termName:        linux
 URxvt.color12:         rgb:5c/5c/ff
 URxvt.imLocale:        en_US.UTF-8
-URxvt.termName:        rxvt-unicode-256color
+URxvt.termName:        linux
+!URxvt.termName:        rxvt-unicode-256color
 urxvt*shading:         10
 urxvt*transparent:     true
 URxvt*font:            xft:Inconsolata for Powerline:size=15,      \

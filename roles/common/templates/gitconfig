@@ -1,0 +1,5 @@
+[user]
+	email = "{{ git.email }}"
+	name = "{{ git.name }}"
+[pull]
+	rebase = true

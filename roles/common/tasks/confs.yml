@@ -7,7 +7,7 @@
     owner: "{{ user.name }}"
 
 - name: gitconfig
-  copy:
+  template:
     src: gitconfig
     dest: "{{ user.home }}/.gitconfig"
     owner: "{{ user.name }}"

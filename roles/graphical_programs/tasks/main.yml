@@ -3,7 +3,6 @@
     update_cache: yes
     state: present
     name:
-      - android-file-transfer
       - evince
       - feh
       - firefox

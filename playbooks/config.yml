@@ -29,6 +29,7 @@
     - { role: networkmanager, tags: ['networkmanager'] }
     - { role: screensaver, tags: ['screensaver'] }
     - { role: yubikey, tags: ['yubikey'] }
+    - { role: android, tags: ['android'] }
 
 - hosts: desktop
   roles:
@@ -52,17 +53,4 @@
     - { role: networkmanager, tags: ['networkmanager'] }
     - { role: screensaver, tags: ['screensaver'] }
     - { role: yubikey, tags: ['yubikey'] }
-
-- hosts: cri
-  roles:
-    - { role: users, tags: ['users'] }
-    - { role: common, tags: ['common'] }
-    - { role: docker, tags: ['docker'] }
-    - { role: xorg, tags: ['xorg'] }
-    - { role: lightdm, tags: ['lightdm'] }
-    - { role: cups, tags: ['cups'] }
-    - { role: latex, tags: ['latex'] }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: vim, tags: ['vim'] }
-    - { role: dev-ada, tags: ['dev-ada'] }
-    - { role: graphical_programs, tags: ['graphical_programs'] }
+    - { role: android, tags: ['android'] }
