@@ -38,6 +38,8 @@
       - zsh
       - mosh
       - python-pip
+      - dmidecode
+      - smartmontools
 
 - name: Install nvidia related pkgs
   pacman:
