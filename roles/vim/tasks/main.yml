@@ -21,3 +21,15 @@
 - git:
     repo: https://github.com/w0rp/ale.git
     dest: "{{ user.home }}/.vim/pack/git-plugins/start/ale"
+
+- git:
+    repo: https://github.com/Valloric/YouCompleteMe.git
+    dest: "{{ user.home }}/.vim/pack/git-plugins/start/YouCompleteMe"
+
+- command: ./install.py --clang-completer
+  args:
+    chdir: "{{ user.home }}/.vim/pack/git-plugins/start/YouCompleteMe"
+
+- git:
+    repo: https://github.com/tpope/vim-fugitive.git
+    dest: "{{ user.home }}/.vim/pack/git-plugins/start/vim-fugitive"
