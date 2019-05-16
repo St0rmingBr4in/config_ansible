@@ -30,6 +30,7 @@
     - { role: screensaver, tags: ['screensaver'] }
     - { role: yubikey, tags: ['yubikey'] }
     - { role: android, tags: ['android'] }
+    - { role: dev-python, tags: ['dev-python'] }
 
 - hosts: desktop
   roles:
@@ -54,3 +55,4 @@
     - { role: screensaver, tags: ['screensaver'] }
     - { role: yubikey, tags: ['yubikey'] }
     - { role: android, tags: ['android'] }
+    - { role: dev-python, tags: ['dev-python'] }

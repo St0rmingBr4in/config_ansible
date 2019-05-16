@@ -1,0 +1,10 @@
+---
+
+- name: Install python dev tools
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - python-tox
+      - python-pylint
+      - gobject-introspection
