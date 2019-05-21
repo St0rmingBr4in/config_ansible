@@ -54,3 +54,13 @@
     src: xprofile
     dest: "{{ user.home }}/.xprofile"
     owner: "{{ user.name }}"
+
+- name: Add simultaneous output in pulseaudio
+  blockinfile:
+    dest: /etc/pulse/default.pa
+    block: |
+      load-module module-alsa-sink device=hw:0,0
+      load-module module-combine-sink sink_name=combined
+      set-default-sink combined
+    insertafter: EOF
+    state: present
