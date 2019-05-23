@@ -3,7 +3,7 @@
   roles:
     - bootstrap
 
-- hosts: laptop
+- hosts: all
   roles:
     - { role: users, tags: ['users'] }
     - { role: common, tags: ['common'] }
@@ -17,13 +17,6 @@
     - { role: latex, tags: ['latex'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: vim, tags: ['vim'] }
-    - { role: download_tools, tags: ['download_tools'] }
-    - { role: dev-go, tags: ['dev-go'] }
-    - { role: dev-stm32, tags: ['dev-stm32'] }
-    - { role: virtualbox, tags: ['virtualbox'] }
-    - { role: dev-ada, tags: ['dev-ada'] }
-    - { role: dev-arduino, tags: ['dev-arduino'] }
-    - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: networkmanager, tags: ['networkmanager'] }
@@ -33,27 +26,15 @@
     - { role: dev-python, tags: ['dev-python'] }
     - { role: notifications, tags: ['notifications'] }
 
+- hosts: laptop
+  roles:
+    - { role: download_tools, tags: ['download_tools'] }
+    - { role: dev-go, tags: ['dev-go'] }
+    - { role: dev-stm32, tags: ['dev-stm32'] }
+    - { role: dev-ada, tags: ['dev-ada'] }
+    - { role: dev-arduino, tags: ['dev-arduino'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
+
 - hosts: desktop
   roles:
-    - { role: users, tags: ['users'] }
-    - { role: common, tags: ['common'] }
-    - { role: ntp, tags: ['ntp'] }
-    - { role: docker, tags: ['docker'] }
-    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
-    - { role: xorg, tags: ['xorg'] }
-    - { role: lightdm, tags: ['lightdm'] }
-    - { role: cups, tags: ['cups'] }
-    - { role: gaming, tags: ['gaming'] }
-    - { role: latex, tags: ['latex'] }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: vim, tags: ['vim'] }
-    - { role: virtualbox, tags: ['virtualbox'] }
-    - { role: dev-ada, tags: ['dev-ada'] }
-    - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
-    - { role: graphical_programs, tags: ['graphical_programs'] }
-    - { role: fonts, tags: ['fonts'] }
-    - { role: networkmanager, tags: ['networkmanager'] }
-    - { role: screensaver, tags: ['screensaver'] }
-    - { role: yubikey, tags: ['yubikey'] }
-    - { role: android, tags: ['android'] }
-    - { role: dev-python, tags: ['dev-python'] }
