@@ -31,6 +31,7 @@
     - { role: yubikey, tags: ['yubikey'] }
     - { role: android, tags: ['android'] }
     - { role: dev-python, tags: ['dev-python'] }
+    - { role: notifications, tags: ['notifications'] }
 
 - hosts: desktop
   roles:
