@@ -10,3 +10,4 @@ set expandtab
 set smarttab
 set autoindent
 set cinoptions=(0,u0,U0,t0,g0,N-s
+set switchbuf=usetab,newtab,useopen
