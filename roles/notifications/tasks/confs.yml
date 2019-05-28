@@ -12,4 +12,4 @@
     regexp: "do-slideout"
     state: present
     line: "  <property name=\"do-slideout\" type=\"bool\" value=\"true\"/>"
-  when: stat_result.stat.exists == True
+  when: stat_result.stat.exists

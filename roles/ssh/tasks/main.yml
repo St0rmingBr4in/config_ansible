@@ -1,4 +1,4 @@
 ---
 - import_tasks: install.yml
-  when: only_user_confs is not defined or only_user_confs == False
+  when: only_user_confs is not defined or not only_user_confs
 - import_tasks: confs.yml

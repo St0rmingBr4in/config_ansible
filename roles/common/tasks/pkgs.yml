@@ -5,6 +5,7 @@
     state: present
     name:
       - ansible
+      - ansible-lint
       - bind-tools
       - curl
       - dosfstools
@@ -42,7 +43,8 @@
       - nvidia
   when: gpu is defined and gpu == 'nvidia'
 
-- aur:
+- name: Install common packages on aur
+  aur:
     use: trizen
     name:
       - etcher-cli-bin

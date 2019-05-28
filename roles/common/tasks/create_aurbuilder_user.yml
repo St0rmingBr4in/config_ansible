@@ -1,26 +1,31 @@
 ---
-- pacman:
+- name: Install base-devel
+  pacman:
     update-cache: yes
     name:
       - base-devel
 
-- user:
+- name: Create aurbuilder user
+  user:
     name: aurbuilder
     group: wheel
     home: /home/aurbuilder
 
-- file:
+- name: Create aurbuilder ansible tmp folder
+  file:
     path: /home/aurbuilder/.ansible/tmp
     state: directory
     owner: aurbuilder
 
-- lineinfile:
+- name: aurbuilder sudo perm
+  lineinfile:
     path: /etc/sudoers.d/12-install-aurbuilder
     line: 'aurbuilder ALL=(ALL) NOPASSWD: ALL'
     create: yes
     validate: 'visudo -cf %s'
 
-- aur:
+- name: Install aur helpers
+  aur:
     use: makepkg
     name:
       - yay

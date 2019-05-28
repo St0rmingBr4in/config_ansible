@@ -1,5 +1,6 @@
 ---
-- pacman:
+- name: Install sudo
+  pacman:
     update-cache: yes
     name:
       - sudo
@@ -12,7 +13,8 @@
     home: "{{ user.home }}"
     password: "{{ user.password }}"
 
-- lineinfile:
+- name: Wheel group has root access
+  lineinfile:
     path: /etc/sudoers.d/11-wheel-group
     line: '%wheel ALL=(ALL) ALL'
     create: yes

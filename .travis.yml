@@ -1,0 +1,6 @@
+---
+dist: xenial
+language: minimal
+
+install: pip install --user ansible-lint
+script: ansible-lint playbooks/config.yml

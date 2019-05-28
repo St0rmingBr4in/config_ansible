@@ -63,4 +63,4 @@
       set-default-sink combined
     insertafter: EOF
     state: present
-  when: only_user_confs is not defined or only_user_confs == False
+  when: only_user_confs is not defined or not only_user_confs

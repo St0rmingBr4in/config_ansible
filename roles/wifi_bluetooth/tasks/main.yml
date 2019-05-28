@@ -12,18 +12,6 @@
       - wpa_supplicant
     update_cache: yes
     state: present
-  
-- name: enable bluetooth
-  service: name=bluetooth enabled=yes
 
-#- name: enable netctl-auto
-#  service: name=netctl-auto@{{ wifi.interface }}.service enabled=yes
-#
-#- name: Copy wifi connections
-#  template:
-#    src: "{{ item }}"
-#    dest: /etc/netctl/{{ wifi.interface }}-{{ item }}
-#  with_items:
-#    - IONIS
-#    - evolukek
-#    - myHTTPd_secure
+- name: Enable bluetooth
+  service: name=bluetooth enabled=yes

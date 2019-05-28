@@ -1,5 +1,6 @@
 ---
-- pacman:
+- name: Install Android Tools
+  pacman:
     update_cache: yes
     state: present
     name:

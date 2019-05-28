@@ -1,37 +1,44 @@
 ---
-
 - name: Install common tools
   pacman:
     update_cache: yes
     state: present
     name:
       - vim
-  when: only_user_confs is not defined or only_user_confs == False
+  when: only_user_confs is not defined or not only_user_confs
 
 - name: vimrc
   copy:
     src: vimrc
     dest: "{{ user.home }}/.vimrc"
     owner: "{{ user.name }}"
-  when: do_not_copy_vimrc is not defined or do_not_copy_vimrc == False
+  when: do_not_copy_vimrc is not defined or not do_not_copy_vimrc
 
-- file:
+- name: Create plugin directory
+  file:
     path: "{{ user.home }}/.vim/pack/git-plugins/start"
     state: directory
     owner: "{{ user.name }}"
 
-- git:
+- name: Clone ale plugin
+  git:
     repo: https://github.com/w0rp/ale.git
     dest: "{{ user.home }}/.vim/pack/git-plugins/start/ale"
+    version: master
 
-- git:
+- name: Clone YouCompleteMe plugin
+  git:
     repo: https://github.com/Valloric/YouCompleteMe.git
     dest: "{{ user.home }}/.vim/pack/git-plugins/start/YouCompleteMe"
+    version: master
 
-- command: ./install.py --clang-completer
+- name: Install YouCompleteMe
+  command: ./install.py --clang-completer
   args:
     chdir: "{{ user.home }}/.vim/pack/git-plugins/start/YouCompleteMe"
 
-- git:
+- name: Clone vim-fugitive plugin
+  git:
     repo: https://github.com/tpope/vim-fugitive.git
     dest: "{{ user.home }}/.vim/pack/git-plugins/start/vim-fugitive"
+    version: master

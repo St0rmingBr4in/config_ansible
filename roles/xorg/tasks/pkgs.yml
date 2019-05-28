@@ -10,7 +10,7 @@
       - xsel
       - compton
 
-- name: Install i3
+- name: Install window manager and related stuff
   pacman:
     update_cache: yes
     state: present
@@ -28,7 +28,8 @@
       - xss-lock
       - blueman
 
-- aur:
+- name: Install aur xorg tools
+  aur:
     use: trizen
     name:
       - light

@@ -33,7 +33,8 @@
               state=present
               line="Exec=env GTK_THEME=Adwaita:dark lightdm-gtk-greeter"
 
-- aur:
+- name: Install xinit-xsession
+  aur:
     use: trizen
     name:
       - xinit-xsession

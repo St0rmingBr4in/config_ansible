@@ -1,7 +1,10 @@
 ---
 - name: Disable ssh password authentification
-  lineinfile: dest=/etc/ssh/sshd_config regexp=PasswordAuthentication line="PasswordAuthentication no"
-  when: authorize_ssh_password is not defined or authorize_ssh_password == False
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: PasswordAuthentication
+    line: "PasswordAuthentication no"
+  when: authorize_ssh_password is not defined or not authorize_ssh_password
   notify: restart sshd
 
 - name: enable sshd

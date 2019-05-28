@@ -1,4 +1,4 @@
 ---
 - name: restart sshd
   service: name=sshd.socket state=restarted
-  when: ssh.enable_sshd == True
+  when: ssh.enable_sshd

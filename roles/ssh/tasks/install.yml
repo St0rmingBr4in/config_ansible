@@ -9,18 +9,20 @@
   file: path=/etc/systemd/system/sshd.socket.d state=directory
 
 - name: Push OpenSSH socket unit file
-  template: src=sshd-socket-override.conf.j2 dest=/etc/systemd/system/sshd.socket.d/override.conf
+  template:
+    src: sshd-socket-override.conf.j2
+    dest: /etc/systemd/system/sshd.socket.d/override.conf
   notify:
     - reload systemd config
     - restart sshd
 
 - name: Enable and start OpenSSH
   service: name=sshd.socket enabled=yes state=started
-  when: ssh.enable_sshd == True
+  when: ssh.enable_sshd
 
 - name: Disable and stop OpenSSH
   service: name=sshd.socket enabled=no state=stopped
-  when: ssh.enable_sshd == False
+  when: not ssh.enable_sshd
 
 - name: Install sshfs
   pacman: name=sshfs state=present
@@ -46,4 +48,3 @@
   lineinfile: dest=/etc/profile
               state=present
               line="eval `keychain --eval`"
-
