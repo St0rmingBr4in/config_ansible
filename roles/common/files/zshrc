@@ -1,4 +1,5 @@
 export EDITOR="vim"
+export VISUAL="vim"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=4096
 export LANG=en_US.UTF-8

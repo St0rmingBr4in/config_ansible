@@ -36,9 +36,9 @@
     - {role: virtualbox, tags: ['virtualbox']}
 
 - hosts: only_confs
+  gather_facts: no
   roles:
     - {role: common, tags: ['common']}
     - {role: notifications, tags: ['notifications']}
     - {role: ssh, tags: ['ssh']}
     - {role: vim, tags: ['vim']}
-    - {role: xorg, tags: ['xorg']}

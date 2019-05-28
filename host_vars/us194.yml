@@ -1,9 +1,11 @@
 ---
+ansible_ssh_user: julien.doche
 only_user_confs: True
 do_not_copy_vimrc: True
 
 user:
   name: julien.doche
+  group: julien.doche
   shell: /bin/zsh
   home: /home/julien.doche
 

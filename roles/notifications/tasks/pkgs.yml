@@ -1,5 +1,4 @@
 ---
-
 - name: Install xfce4-notifyd
   pacman:
     state: present

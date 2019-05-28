@@ -1,3 +1,7 @@
+Host gerrit gerrit.corp.arista.io
+    HostName gerrit.corp.arista.io
+    User julien.doche
+
 Host us194
     User julien.doche
     IdentityFile ~/.ssh/arista
