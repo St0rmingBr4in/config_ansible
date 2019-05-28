@@ -1,3 +1,4 @@
+---
 - copy:
     src: hdmi_sound_toggle.sh
     dest: /usr/local/bin/hdmi_sound_toggle.sh

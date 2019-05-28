@@ -1,5 +1,4 @@
 ---
-
 - name: Install X11
   pacman:
     update_cache: yes

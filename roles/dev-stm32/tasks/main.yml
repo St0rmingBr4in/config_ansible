@@ -1,3 +1,4 @@
+---
 - name: Install pkgs
   pacman:
     update_cache: yes

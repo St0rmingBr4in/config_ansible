@@ -1,3 +1,4 @@
+---
 - name: Install download tools
   pacman:
     name:

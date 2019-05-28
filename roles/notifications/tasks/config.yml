@@ -1,0 +1,7 @@
+---
+- name: Config xfce4-notifyd
+  lineinfile:
+    dest: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+    regexp: "do-slideout"
+    state: present
+    line: "  <property name=\"do-slideout\" type=\"bool\" value=\"true\"/>"

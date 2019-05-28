@@ -6,12 +6,14 @@
     state: present
     name:
       - vim
+  when: only_user_confs is not defined or only_user_confs == False
 
 - name: vimrc
   copy:
     src: vimrc
     dest: "{{ user.home }}/.vimrc"
     owner: "{{ user.name }}"
+  when: do_not_copy_vimrc is not defined or do_not_copy_vimrc == False
 
 - file:
     path: "{{ user.home }}/.vim/pack/git-plugins/start"

@@ -1,3 +1,4 @@
+---
 - name: Install SDL tools
   pacman:
     name:

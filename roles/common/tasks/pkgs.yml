@@ -1,32 +1,24 @@
 ---
-
 - name: Install common tools
   pacman:
     update_cache: yes
     state: present
     name:
       - ansible
-      - base-devel
-      - bat
       - bind-tools
       - curl
-      - cmake
       - dosfstools
       - efibootmgr
       - exfat-utils
-      - gdb
-      - git
       - gnu-netcat
       - htop
       - mlocate
       - ntfs-3g
       - ntfsprogs
-      - opencl-headers
       - p7zip
       - parallel
       - pkgfile
       - proxychains-ng
-      - python-virtualenv
       - rsync
       - screen
       - tcpdump
@@ -34,7 +26,6 @@
       - tree
       - unrar
       - unzip
-      - valgrind
       - wget
       - zsh
       - mosh

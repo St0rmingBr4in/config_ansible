@@ -1,0 +1,12 @@
+---
+only_user_confs: True
+do_not_copy_vimrc: True
+
+user:
+  name: julien.doche
+  shell: /bin/zsh
+  home: /home/julien.doche
+
+git:
+  name: "Julien DOCHE"
+  email: julien.doche@arista.com

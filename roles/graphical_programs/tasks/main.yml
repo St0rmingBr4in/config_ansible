@@ -1,3 +1,4 @@
+---
 - name: Install graphical utilities
   pacman:
     update_cache: yes

@@ -16,9 +16,11 @@
   copy:
     src: pacman.conf
     dest: /etc/pacman.conf
+  when: only_user_confs is not defined or only_user_confs == False
 
 - name: disable compression in makepkg
   lineinfile: dest=/etc/makepkg.conf
               regexp="^PKGEXT="
               state=present
               line="PKGEXT='.pkg.tar'"
+  when: only_user_confs is not defined or only_user_confs == False

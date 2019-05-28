@@ -1,5 +1,4 @@
 ---
-
 - name: Install python dev tools
   pacman:
     update_cache: yes
@@ -8,3 +7,4 @@
       - python-tox
       - python-pylint
       - gobject-introspection
+      - python-virtualenv

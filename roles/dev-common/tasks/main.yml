@@ -1,0 +1,15 @@
+---
+- name: Install common dev tools
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - base-devel
+      - bat
+      - cmake
+      - gdb
+      - git
+      - opencl-headers
+      - shellcheck
+      - valgrind
+      - yamllint

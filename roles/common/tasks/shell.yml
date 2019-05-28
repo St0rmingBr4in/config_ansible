@@ -1,5 +1,4 @@
 ---
-
 - name: Get zsh path
   command: which zsh
   register: zsh_path

@@ -1,3 +1,4 @@
+---
 - name: Install wifi-bluetooth pkgs
   pacman:
     name:

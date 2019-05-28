@@ -1,0 +1,9 @@
+---
+- name: Make directory for user SSH key
+  file: path=/home/{{ user.name }}/.ssh state=directory owner={{ user.name }} group={{ user.group }}
+
+- name: SSH Config
+  copy:
+    dest: "{{ user.home }}/.ssh/config"
+    src: sshconfig
+    owner: "{{ user.name }}"

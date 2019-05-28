@@ -1,7 +1,9 @@
 ---
-
 - import_tasks: create_aurbuilder_user.yml
-- import_tasks: packages.yml
+  when: only_user_confs is not defined or only_user_confs == False
+- import_tasks: pkgs.yml
+  when: only_user_confs is not defined or only_user_confs == False
 - import_tasks: shell.yml
 - import_tasks: confs.yml
 - import_tasks: ssh.yml
+  when: only_user_confs is not defined or only_user_confs == False
