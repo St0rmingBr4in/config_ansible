@@ -18,7 +18,7 @@
 - name: Install the base packages
   command: pacstrap /mnt base base-devel ansible vim openssh
 
-- name: Fstab # TODO : not working!!!
+- name: Fstab  # TODO : not working!!!
   command: genfstab -U /mnt >> /mnt/etc/fstab
 
 - name: Copy install script

@@ -10,12 +10,12 @@
 
 - name: Enable and start NetworkManager
   service:
-      name: NetworkManager.service
-      enabled: yes
-      state: started
+    name: NetworkManager.service
+    enabled: yes
+    state: started
 
 - name: Enable and start NetworkManager dispatcher
   service:
-      name: NetworkManager-dispatcher.service
-      enabled: yes
-      state: started
+    name: NetworkManager-dispatcher.service
+    enabled: yes
+    state: started

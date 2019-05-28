@@ -2,5 +2,5 @@
 - name: Install virtualbox
   pacman:
     name:
-     - virtualbox-host-modules-arch
-     - virtualbox
+    - virtualbox-host-modules-arch
+    - virtualbox

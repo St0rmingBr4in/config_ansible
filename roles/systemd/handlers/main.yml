@@ -1,4 +1,4 @@
 ---
 - name: reload systemd config
   systemd:
-      daemon_reload: yes
+    daemon_reload: yes
