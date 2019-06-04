@@ -13,3 +13,5 @@
       - shellcheck
       - valgrind
       - yamllint
+      - yq
+      - jq
