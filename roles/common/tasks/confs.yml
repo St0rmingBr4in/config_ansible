@@ -1,5 +1,4 @@
 ---
-
 - name: zshrc
   copy:
     src: zshrc

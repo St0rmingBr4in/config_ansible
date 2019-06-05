@@ -1,0 +1,25 @@
+---
+user:
+  name: test
+  group: test
+  groups:
+    - wheel
+  shell: /bin/zsh
+  home: /home/testhome
+  password: $1$5iNU6OGu$hiyL.gc4jgiDaywOl89mo1
+
+git:
+  name: "truc"
+  email: truc@test.com
+
+timezone:
+  region: Europe
+  city: Paris
+
+no_systemd: True
+
+ssh:
+  port: 2222
+  enable_sshd: True
+  PasswordAuthentication: yes
+  PermitEmptyPasswords: yes

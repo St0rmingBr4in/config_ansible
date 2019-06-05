@@ -2,3 +2,4 @@
 - name: reload systemd config
   systemd:
     daemon_reload: yes
+  when: no_systemd is not defined or not no_systemd

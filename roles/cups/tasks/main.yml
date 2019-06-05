@@ -31,3 +31,4 @@
 
 - name: Enable and start CUPS
   service: name=org.cups.cupsd.service enabled=yes state=started
+  when: no_systemd is not defined or not no_systemd

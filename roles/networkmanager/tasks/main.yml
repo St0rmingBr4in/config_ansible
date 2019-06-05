@@ -13,9 +13,11 @@
     name: NetworkManager.service
     enabled: yes
     state: started
+  when: no_systemd is not defined or not no_systemd
 
 - name: Enable and start NetworkManager dispatcher
   service:
     name: NetworkManager-dispatcher.service
     enabled: yes
     state: started
+  when: no_systemd is not defined or not no_systemd

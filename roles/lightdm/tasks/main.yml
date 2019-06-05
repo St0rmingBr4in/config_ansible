@@ -8,6 +8,7 @@
 
 - name: Enable LightDM
   service: name=lightdm.service enabled=yes
+  when: no_systemd is not defined or not no_systemd
 
 - name: Create background dir
   file: path=/usr/share/backgrounds state=directory

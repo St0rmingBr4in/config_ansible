@@ -2,8 +2,11 @@
 dist: xenial
 language: minimal
 
-install: pip install --user ansible-lint yamllint
+install: pip install --user ansible ansible-lint yamllint
 script:
   - ansible-lint playbooks/config.yml
   - ansible-lint playbooks/install.yml
   - yamllint .
+  - docker build ci -t testing
+  - docker run -p 2222:22 testing &
+  - ANSIBLE_SSH_ARGS='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' ansible-playbook --diff playbooks/config.yml -l localhost

@@ -15,3 +15,4 @@
 
 - name: Enable screen lock service
   service: name="screenlock@{{ user.name }}.service" enabled=yes
+  when: no_systemd is not defined or not no_systemd

@@ -1,4 +1,12 @@
 ---
+
+- hosts:
+    - laptop
+    - desktop
+  gather_facts: no
+  roles:
+    - { role: bootstrap, tags: ['bootstrap'] }
+
 - hosts:
     - laptop
     - desktop

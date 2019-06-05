@@ -17,3 +17,4 @@
   service:
     name: openntpd
     enabled: yes
+  when: no_systemd is not defined or not no_systemd

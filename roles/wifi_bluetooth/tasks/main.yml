@@ -8,10 +8,18 @@
       - dialog
       - pulseaudio-alsa
       - pulseaudio-bluetooth
-      - wpa_actiond
       - wpa_supplicant
     update_cache: yes
     state: present
 
+- name: Install wifi-bluetooth pkgs on aur
+  aur:
+    use: trizen
+    name:
+      - wpa_actiond
+  become: yes
+  become_user: aurbuilder
+
 - name: Enable bluetooth
   service: name=bluetooth enabled=yes
+  when: no_systemd is not defined or not no_systemd

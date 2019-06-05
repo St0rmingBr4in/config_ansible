@@ -1,10 +1,11 @@
 ---
-- name: Install common tools
+- name: Install vim and tools needed for plugins
   pacman:
     update_cache: yes
     state: present
     name:
       - vim
+      - cmake
   when: only_user_confs is not defined or not only_user_confs
 
 - name: vimrc

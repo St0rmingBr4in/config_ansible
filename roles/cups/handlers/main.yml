@@ -1,3 +1,4 @@
 ---
 - name: restart cups
   service: name=org.cups.cupsd.service state=restarted
+  when: no_systemd is not defined or not no_systemd
