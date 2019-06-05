@@ -3,12 +3,12 @@
   pacman:
     name:
       - transmission-gtk
+      - deluge
 
-- name: Install download tools (AUR)
+- name: Install windscribe-cli and webtorrent-desktop
   aur:
     use: trizen
     name:
-      - megasync
       - windscribe-cli
       - webtorrent-desktop-bin
   become: yes
