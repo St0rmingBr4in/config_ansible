@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/St0rmingBr4in/config_ansible.svg?branch=master)](https://travis-ci.com/St0rmingBr4in/config_ansible)
+
 # Configuration of my PCs running Arch linux using ansible
 
 ## Adding a new PC
