@@ -11,3 +11,5 @@ set smarttab
 set autoindent
 set cinoptions=(0,u0,U0,t0,g0,N-s
 set switchbuf=usetab,newtab,useopen
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
