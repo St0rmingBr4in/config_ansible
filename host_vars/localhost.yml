@@ -19,7 +19,6 @@ timezone:
 no_systemd: True
 
 ssh:
-  port: 2222
   enable_sshd: True
   PasswordAuthentication: yes
   PermitEmptyPasswords: yes

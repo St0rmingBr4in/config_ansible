@@ -1,10 +1,10 @@
 # {{ ansible_managed }}
 
-Port {{ ssh.port | default(22) }}
+Port {{ ssh.port | default("22") }}
 Protocol 2
 PermitRootLogin yes
-PasswordAuthentication {{ ssh.PasswordAuthentication | default(no) }}
-PermitEmptyPasswords {{ ssh.PermitEmptyPasswords | default(no) }}
+PasswordAuthentication {{ ssh.PasswordAuthentication | default("no") }}
+PermitEmptyPasswords {{ ssh.PermitEmptyPasswords | default("no") }}
 X11Forwarding yes
 PrintMotd no
 PrintLastLog yes
