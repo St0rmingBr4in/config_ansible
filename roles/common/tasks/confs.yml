@@ -23,3 +23,15 @@
               state=present
               line="PKGEXT='.pkg.tar'"
   when: only_user_confs is not defined or not only_user_confs
+
+- name: Create yay config dir
+  file:
+    path: "{{ user.home }}/.config/yay"
+    state: directory
+    owner: "{{ user.name }}"
+
+- name: Configure yay
+  copy:
+    src: yayconfig.json
+    dest: "{{ user.home }}/.config/yay/config.json"
+    owner: "{{ user.name }}"
