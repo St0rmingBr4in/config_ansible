@@ -8,6 +8,41 @@
       - cmake
   when: only_user_confs is not defined or not only_user_confs
 
+- name: Install linters
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - flawfinder
+      - languagetool
+      - shellcheck
+      - vint
+      - yamllint
+  when: only_user_confs is not defined or not only_user_confs
+
+- name: Install cpplint
+  pip:
+    name: cpplint
+  when: only_user_confs is not defined or not only_user_confs
+
+- name: Install linters on aur
+  aur:
+    use: trizen
+    name:
+      - cmake-format
+      - gitlint
+      - hadolint-bin
+      - vale-bin
+  become: yes
+  become_user: aurbuilder
+  when: only_user_confs is not defined or not only_user_confs
+
+- name: vale.ini
+  copy:
+    src: vale.ini
+    dest: "{{ user.home }}/.vale.ini"
+    owner: "{{ user.name }}"
+
 - name: vimrc
   copy:
     src: vimrc

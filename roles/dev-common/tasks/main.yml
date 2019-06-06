@@ -7,11 +7,10 @@
       - base-devel
       - bat
       - cmake
+      - clang
       - gdb
       - git
       - opencl-headers
-      - shellcheck
       - valgrind
-      - yamllint
       - yq
       - jq

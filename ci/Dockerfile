@@ -8,4 +8,4 @@ RUN echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config
 RUN ssh-keygen -b 521 -t ecdsa -f /root/.ssh/id_ecdsa -P ""
 RUN passwd -d root
 
-CMD /usr/bin/sshd -h /root/.ssh/id_ecdsa && sleep infinity
+CMD ["/bin/sh", "-c", "/usr/bin/sshd -h /root/.ssh/id_ecdsa && sleep infinity"]
