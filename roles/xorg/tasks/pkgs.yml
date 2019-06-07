@@ -6,7 +6,6 @@
     name:
       - xbindkeys
       - xorg-server
-      - xorg-xinit
       - xsel
       - compton
 
@@ -25,7 +24,6 @@
       - rofi
       - rxvt-unicode
       - xorg-xrandr
-      - xss-lock
       - blueman
 
 - name: Install aur xorg tools

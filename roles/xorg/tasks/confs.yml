@@ -5,13 +5,6 @@
     dest: "{{ user.home }}/.Xdefaults"
     owner: "{{ user.name }}"
 
-- name: xinitrc
-  copy:
-    src: xinitrc
-    dest: "{{ user.home }}/.xinitrc"
-    owner: "{{ user.name }}"
-    mode: a+x
-
 - name: Create config directory
   file:
     path: "{{ user.home }}/.config"

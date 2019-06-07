@@ -1,6 +1,0 @@
-sh ~/.fehbg &
-dunst &
-compton &
-xbindkeys
-setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-exec i3

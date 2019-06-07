@@ -1,1 +1,4 @@
-xss-lock -- /usr/bin/i3lock &
+sh ~/.fehbg &
+compton &
+xbindkeys &
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
