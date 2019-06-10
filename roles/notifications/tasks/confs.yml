@@ -6,10 +6,13 @@
   register: stat_result
 
 - name: Config xfce4-notifyd
-  lineinfile:
-    dest: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/\
-      xfce4-notifyd.xml"
-    regexp: "do-slideout"
+  xml:
+    path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+    xpath: /channel/property[@name="do-slideout" and @type="bool" and @value="true"]
     state: present
-    line: "  <property name=\"do-slideout\" type=\"bool\" value=\"true\"/>"
-  when: stat_result.stat.exists
+
+- name: Config xfce4-notifyd
+  xml:
+    path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+    xpath: /channel/property[@name="do-slideout" and @type="bool" and @value="false"]
+    state: absent

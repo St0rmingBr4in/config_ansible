@@ -5,6 +5,7 @@
     state: present
     name:
       - ansible
+      - python-lxml
       - ansible-lint
       - bind-tools
       - curl
