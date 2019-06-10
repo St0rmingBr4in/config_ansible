@@ -1,0 +1,6 @@
+---
+- name: Restart autorandr
+  service:
+    name: autorandr.service
+    state: restarted
+  when: no_systemd is not defined or not no_systemd

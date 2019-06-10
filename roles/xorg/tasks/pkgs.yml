@@ -25,6 +25,15 @@
       - rxvt-unicode
       - xorg-xrandr
       - blueman
+      - autorandr
+
+- name: Enable autorandr service
+  service:
+    name: autorandr.service
+    enabled: yes
+    state: started
+  notify: Restart autorandr
+  when: no_systemd is not defined or not no_systemd
 
 - name: Install aur xorg tools
   aur:
