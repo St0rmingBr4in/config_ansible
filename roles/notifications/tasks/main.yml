@@ -1,4 +1,5 @@
 ---
-- import_tasks: pkgs.yml
+- block:
+  - import_tasks: pkgs.yml
+  - import_tasks: confs.yml
   when: only_user_confs is not defined or not only_user_confs
-- import_tasks: confs.yml
