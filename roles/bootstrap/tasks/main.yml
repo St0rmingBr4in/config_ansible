@@ -1,6 +1,6 @@
 ---
-
 - name: Install ansible prerequisites
   script: ansible_prerequisites.sh
   args:
     creates: /root/.ansible_prereqs_installed
+  when: only_user_confs is not defined or not only_user_confs
