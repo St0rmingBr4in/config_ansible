@@ -17,12 +17,6 @@
     content: "<channel name=\"xfce4-notifyd\" version=\"1.0\"></channel>"
   when: not stat_result.stat.exists
 
-- name: Install lxml
-  pacman:
-    update_cache: yes
-    name: python-lxml
-    state: present
-
 - name: Config xfce4-notifyd
   xml:
     path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
