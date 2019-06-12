@@ -1,23 +1,23 @@
 ---
-- name: zshrc
+- name: Copy zshrc
   copy:
     src: zshrc
     dest: "{{ user.home }}/.zshrc"
     owner: "{{ user.name }}"
 
-- name: gitconfig
+- name: Copy gitconfig
   template:
     src: gitconfig
     dest: "{{ user.home }}/.gitconfig"
     owner: "{{ user.name }}"
 
-- name: pacman.conf
+- name: Copy pacman.conf
   copy:
     src: pacman.conf
     dest: /etc/pacman.conf
   when: only_user_confs is not defined or not only_user_confs
 
-- name: disable compression in makepkg
+- name: Disable compression in makepkg
   lineinfile: dest=/etc/makepkg.conf
               regexp="^PKGEXT="
               state=present

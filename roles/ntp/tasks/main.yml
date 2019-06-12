@@ -7,11 +7,11 @@
 
 - name: Configure ntpd.conf
   copy: src=ntpd.conf dest=/etc/ntpd.conf
-  notify: restart ntpd
+  notify: Restart ntpd
 
 - name: Configure default openntpd
   copy: src=default_openntpd dest=/etc/default/openntpd
-  notify: restart ntpd
+  notify: Restart ntpd
 
 - name: Enable openntpd
   service:

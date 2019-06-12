@@ -1,5 +1,5 @@
 ---
-- name: install texlive core
+- name: Install texlive core
   pacman:
     name:
       - rubber
@@ -8,7 +8,7 @@
       - texlive-fontsextra
     update_cache: yes
 
-- name: install latex dependencies
+- name: Install latex dependencies
   aur:
     use: trizen
     name:

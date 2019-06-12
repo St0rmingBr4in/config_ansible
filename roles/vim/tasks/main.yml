@@ -38,19 +38,19 @@
   become_user: aurbuilder
   when: only_user_confs is not defined or not only_user_confs
 
-- name: ycm_extra_conf.py
+- name: Copy YouCompleteMe configuration
   copy:
     src: ycm_extra_conf.py
     dest: "{{ user.home }}/.ycm_extra_conf.py"
     owner: "{{ user.name }}"
 
-- name: vale.ini
+- name: Copy vale configuration
   copy:
     src: vale.ini
     dest: "{{ user.home }}/.vale.ini"
     owner: "{{ user.name }}"
 
-- name: vimrc
+- name: Copy vimrc
   copy:
     src: vimrc
     dest: "{{ user.home }}/.vimrc"

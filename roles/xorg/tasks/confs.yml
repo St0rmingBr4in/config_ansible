@@ -17,7 +17,7 @@
     state: directory
     owner: "{{ user.name }}"
 
-- name: i3config
+- name: Copy i3config
   copy:
     src: i3config
     dest: "{{ user.home }}/.config/i3/config"
@@ -29,19 +29,19 @@
     state: directory
     owner: "{{ user.name }}"
 
-- name: compton
+- name: Copy compton configuration
   copy:
     src: compton.conf
     dest: "{{ user.home }}/.config/compton/compton.conf"
     owner: "{{ user.name }}"
 
-- name: xbindkeysrc
+- name: Copy xbindkeysrc configuration
   copy:
     src: xbindkeysrc
     dest: "{{ user.home }}/.xbindkeysrc"
     owner: "{{ user.name }}"
 
-- name: xprofile
+- name: Copy xprofile
   copy:
     src: xprofile
     dest: "{{ user.home }}/.xprofile"

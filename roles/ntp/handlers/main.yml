@@ -1,4 +1,4 @@
 ---
-- name: restart ntpd
+- name: Restart ntpd
   service: name=openntpd state=restarted
   when: no_systemd is not defined or not no_systemd

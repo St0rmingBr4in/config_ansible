@@ -17,7 +17,7 @@
     state: directory
     owner: aurbuilder
 
-- name: aurbuilder sudo perm
+- name: Enable aurbuilder sudo permission
   lineinfile:
     path: /etc/sudoers.d/12-install-aurbuilder
     line: 'aurbuilder ALL=(ALL) NOPASSWD: ALL'
