@@ -1,0 +1,9 @@
+---
+pull_request_rules:
+  - name: Automatic merge on CI success and ready-to-merge label
+    conditions:
+      - status-success=continuous-integration/travis-ci/pr
+      - label=ready-to-merge
+    actions:
+      merge:
+        method: rebase
