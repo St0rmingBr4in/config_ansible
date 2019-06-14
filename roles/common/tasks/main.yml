@@ -1,6 +1,5 @@
 ---
 - block:
-    - import_tasks: create_aurbuilder_user.yml
     - import_tasks: pkgs.yml
     - import_tasks: shell.yml
   when: only_user_confs is not defined or not only_user_confs

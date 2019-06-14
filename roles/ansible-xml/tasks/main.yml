@@ -1,0 +1,6 @@
+---
+- name: Install python-lxml
+  pacman:
+    update_cache: yes
+    name:
+      - python-lxml
