@@ -34,10 +34,10 @@ alias lla='ls -la'
 alias df='df -h'
 alias reload="source ~/.zshrc"
 alias sr="ssh -l root"
-alias upgradable="apt update && apt list --upgradable"
 alias bfsgrep="( find . -maxdepth 1 -print ; find . -mindepth 2 -print ) | xargs -n 50 -exec grep"
 alias rsync="rsync --compress --human-readable --progress --recursive --stats"
 alias parallel="parallel --progress --bar"
+alias greperr="grep --color=always -i 'fail\|error\|failed\|exception\|undefined\|missing\|raise\|$'"
 
 autoload -U compinit colors && compinit && colors
 
@@ -81,3 +81,5 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 bindkey '[C' forward-word
 bindkey '[D' backward-word
+bindkey "${terminfo[kpp]}" up-line-or-search
+bindkey "${terminfo[knp]}" down-line-or-search
