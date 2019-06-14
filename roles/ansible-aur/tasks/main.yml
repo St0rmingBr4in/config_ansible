@@ -1,0 +1,38 @@
+---
+- block:
+  - name: Create aurbuilder user
+    user:
+      name: aurbuilder
+      group: wheel
+      home: /home/aurbuilder
+
+  - name: Create aurbuilder ansible tmp folder
+    file:
+      path: /home/aurbuilder/.ansible/tmp
+      state: directory
+      owner: aurbuilder
+
+  - name: Enable aurbuilder sudo permission
+    lineinfile:
+      path: /etc/sudoers.d/12-install-aurbuilder
+      line: 'aurbuilder ALL=(ALL) NOPASSWD: ALL'
+      create: yes
+      validate: 'visudo -cf %s'
+
+  - name: Install pkgbuild and aur helpers dependencies
+    pacman:
+      update_cache: yes
+      name:
+      - base-devel
+
+  - name: Install aur helpers
+    aur:
+      use: makepkg
+      name:
+      - yay
+      - trizen
+      skip_pgp_check: yes
+    become: yes
+    become_user: aurbuilder
+
+  when: only_user_confs is not defined or not only_user_confs

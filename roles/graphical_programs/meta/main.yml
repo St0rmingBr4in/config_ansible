@@ -2,3 +2,4 @@
 dependencies:
   - { role: bootstrap }
   - { role: users }
+  - { role: ansible-aur }
