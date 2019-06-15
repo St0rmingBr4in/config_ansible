@@ -53,7 +53,6 @@
       - ttf-merriweather
       - ttf-carlito
       - ttf-caladea
-      - ttf-courier-prime
       - ttf-heuristica
   become: yes
   become_user: aurbuilder
