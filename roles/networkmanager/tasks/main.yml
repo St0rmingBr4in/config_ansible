@@ -3,10 +3,10 @@
   pacman:
     state: present
     name:
+      - gnome-keyring
+      - network-manager-applet
       - networkmanager
       - networkmanager-openvpn
-      - network-manager-applet
-      - gnome-keyring
 
 - name: Enable and start NetworkManager
   service:

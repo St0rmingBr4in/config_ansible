@@ -6,6 +6,6 @@
   pacman:
     state: present
     name:
-      - pcsclite
-      - libusb-compat
       - ccid
+      - libusb-compat
+      - pcsclite

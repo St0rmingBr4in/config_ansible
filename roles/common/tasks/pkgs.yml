@@ -8,20 +8,24 @@
       - ansible-lint
       - bind-tools
       - curl
+      - dmidecode
       - dosfstools
       - efibootmgr
       - exfat-utils
       - gnu-netcat
       - htop
       - mlocate
+      - mosh
       - ntfs-3g
       - ntfsprogs
       - p7zip
       - parallel
       - pkgfile
       - proxychains-ng
+      - python-pip
       - rsync
       - screen
+      - smartmontools
       - tcpdump
       - traceroute
       - tree
@@ -29,10 +33,6 @@
       - unzip
       - wget
       - zsh
-      - mosh
-      - python-pip
-      - dmidecode
-      - smartmontools
 
 - name: Install nvidia related pkgs
   pacman:

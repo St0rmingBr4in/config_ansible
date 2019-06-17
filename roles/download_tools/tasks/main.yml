@@ -2,14 +2,14 @@
 - name: Install download tools
   pacman:
     name:
-      - transmission-gtk
       - deluge
+      - transmission-gtk
 
 - name: Install windscribe-cli and webtorrent-desktop
   aur:
     use: trizen
     name:
-      - windscribe-cli
       - webtorrent-desktop-bin
+      - windscribe-cli
   become: yes
   become_user: aurbuilder

@@ -14,18 +14,18 @@
       - thunderbird
       - transmission-gtk
       - virt-manager
+      - vlc
       - youtube-dl
       - zathura
       - zathura-pdf-poppler
-      - vlc
 
 - name: Install Thunar and dependencies
   pacman:
     update_cache: yes
     state: present
     name:
-      - thunar
       - ffmpegthumbnailer
+      - thunar
       - tumbler
 
 - name: Install git instaweb prerequisites
@@ -33,8 +33,8 @@
     update_cache: yes
     state: present
     name:
-      - perl-cgi
       - lighttpd
+      - perl-cgi
 
 - name: Install Chrome Slack and spotify
   aur:

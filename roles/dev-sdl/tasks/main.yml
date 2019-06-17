@@ -2,7 +2,7 @@
 - name: Install SDL tools
   pacman:
     name:
-      - sdl2_ttf
-      - sdl2_net
-      - sdl2_mixer
       - sdl2_image
+      - sdl2_mixer
+      - sdl2_net
+      - sdl2_ttf
