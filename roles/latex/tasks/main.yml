@@ -4,8 +4,8 @@
     name:
       - rubber
       - texlive-core
-      - texlive-latexextra
       - texlive-fontsextra
+      - texlive-latexextra
     update_cache: yes
 
 - name: Install latex dependencies

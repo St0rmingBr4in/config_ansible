@@ -4,8 +4,8 @@
     update_cache: yes
     state: present
     name:
-      - vim
       - cmake
+      - vim
   when: only_user_confs is not defined or not only_user_confs
 
 - name: Install linters

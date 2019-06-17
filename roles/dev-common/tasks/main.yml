@@ -6,12 +6,12 @@
     name:
       - base-devel
       - bat
-      - cmake
       - clang
+      - cmake
       - gdb
       - git
+      - hub
+      - jq
       - opencl-headers
       - valgrind
       - yq
-      - jq
-      - hub
