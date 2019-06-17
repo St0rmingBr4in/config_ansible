@@ -54,6 +54,13 @@
     regex: "load-module module-switch-on-port-available"
   when: only_user_confs is not defined or not only_user_confs
 
+- name: Pulse do not switch to new output automatically
+  lineinfile:
+    dest: /etc/pulse/default.pa
+    line: "#load-module module-switch-on-connect"
+    regex: "load-module module-switch-on-connect"
+  when: only_user_confs is not defined or not only_user_confs
+
 - name: Add simultaneous output in pulseaudio
   blockinfile:
     dest: /etc/pulse/default.pa
