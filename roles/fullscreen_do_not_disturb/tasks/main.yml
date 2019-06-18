@@ -1,0 +1,11 @@
+---
+- name: Copy script
+  copy:
+    src: fullscreen_do_not_disturb/detect_fullscreen.sh
+    dest: /usr/local/bin/fullscreen_do_not_disturb.sh
+    mode: a+x
+
+- name: Add service
+  copy:
+    src: fullscreen_do_not_disturb.service
+    dest: /etc/systemd/system/fullscreen_do_not_disturb.service

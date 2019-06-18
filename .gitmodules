@@ -1,3 +1,6 @@
 [submodule "library/aur"]
 	path = library/ansible-aur
 	url = https://github.com/kewlfft/ansible-aur.git
+[submodule "roles/fullscreen_do_not_disturb/files/fullscreen_do_not_disturb"]
+	path = roles/fullscreen_do_not_disturb/files/fullscreen_do_not_disturb
+	url = https://github.com/St0rmingBr4in/fullscreen_do_not_disturb.git
