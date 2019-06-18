@@ -3,3 +3,6 @@
 	name = "{{ git.name }}"
 [pull]
 	rebase = true
+[alias]
+        lg = "!git log --graph --all --oneline"
+        sttaus = "!git status"
