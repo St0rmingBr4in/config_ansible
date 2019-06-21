@@ -63,6 +63,12 @@
     state: directory
     owner: "{{ user.name }}"
 
+- name: Clone file_line plugin
+  git:
+    repo: https://github.com/bogado/file-line.git
+    dest: "{{ user.home }}/.vim/pack/git-plugins/start/file-line"
+    version: master
+
 - name: Clone ale plugin
   git:
     repo: https://github.com/w0rp/ale.git
