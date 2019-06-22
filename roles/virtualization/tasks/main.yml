@@ -1,0 +1,46 @@
+---
+- name: Install pkgs
+  pacman:
+    update_cache: yes
+    name:
+      - dnsmasq
+      - ebtables
+      - firewalld
+      - libvirt
+      - ovmf
+      - qemu
+      - virt-manager
+      - virt-viewer
+
+- name: Locate nvram file
+  lineinfile:
+    name: /etc/libvirt/qemu.conf
+    line: "nvram = [ \"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd\" ]"
+
+- name: Enable and start firewalld
+  service:
+    name: firewalld.service
+    enabled: yes
+    state: started
+  when: no_systemd is not defined or not no_systemd
+  notify: Restart libvirt
+
+- name: Enable and start libvirt
+  service:
+    name: libvirtd.service
+    enabled: yes
+    state: started
+  when: no_systemd is not defined or not no_systemd
+
+- name: Enable and start virtlogd
+  service:
+    name: virtlogd.socket
+    enabled: yes
+    state: started
+  when: no_systemd is not defined or not no_systemd
+
+- name: Add the user to the libvirt group
+  user:
+    name: "{{ user.name }}"
+    groups: libvirt
+    append: yes

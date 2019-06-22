@@ -9,7 +9,6 @@
       - firefox
       - gimp
       - gparted
-      - qemu
       - scrot
       - thunderbird
       - transmission-gtk
