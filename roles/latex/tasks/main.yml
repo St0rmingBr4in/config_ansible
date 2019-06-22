@@ -5,6 +5,7 @@
       - rubber
       - texlive-core
       - texlive-fontsextra
+      - texlive-langkorean
       - texlive-latexextra
     update_cache: yes
 
