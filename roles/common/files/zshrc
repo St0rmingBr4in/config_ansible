@@ -35,7 +35,7 @@ alias df='df -h'
 alias reload="source ~/.zshrc"
 alias sr="ssh -l root"
 alias bfsgrep="( find . -maxdepth 1 -print ; find . -mindepth 2 -print ) | xargs -n 50 -exec grep"
-alias rsync="rsync --compress --human-readable --progress --recursive --stats"
+alias rsync="rsync --compress --human-readable --progress --recursive --stats --info=progress2"
 alias parallel="parallel --progress --bar"
 alias greperr="grep --color=always -i 'fail\|error\|failed\|exception\|undefined\|missing\|raise\|$'"
 
