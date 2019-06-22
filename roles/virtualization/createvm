@@ -1,0 +1,11 @@
+virt-install \
+--name win10 \
+--description "Win10 VM" \
+--ram=8192 \
+--vcpus=4 \
+--os-variant=win10 \
+--disk size=10 \
+--cdrom $HOME/Downloads/Win10.iso \
+--check path_in_use=off \
+--connect qemu:///system \
+--boot uefi

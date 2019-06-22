@@ -1,0 +1,6 @@
+---
+- name: Restart libvirt
+  service:
+    name: libvirtd.service
+    state: restarted
+  when: no_systemd is not defined or not no_systemd
