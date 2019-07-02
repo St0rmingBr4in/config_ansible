@@ -1,0 +1,56 @@
+---
+- name: Install Firefox, Thunderbird and mozilla-extension-manager dependencies
+  pacman:
+    name:
+      - firefox
+      - thunderbird
+      - unzip
+      - wget
+      - grep
+      - xorg-server-xvfb
+    update_cache: yes
+
+- name: Create Firefox profile
+  command: xvfb-run firefox -CreateProfile default
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Create Thunderbird profile
+  command: xvfb-run thunderbird -CreateProfile default
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install mozilla-extension-manager
+  get_url:
+    dest: /usr/local/bin
+    mode: 0755
+    url: https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager
+
+- name: Get latest ext editor release
+  uri:
+    url: https://api.github.com/repos/exteditor/exteditor/releases/latest
+    return_content: true
+  register: exteditor_release
+
+- name: Install ext editor extension
+  command: "mozilla-extension-manager --thunderbird --user --update {{ exteditor_release.json | to_json | from_json | json_query(jq) }}"
+  vars:
+    jq: "assets[?(ends_with(@.name, 'xpi'))].browser_download_url | [0]"
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install Thunderbird extensions
+  command: "mozilla-extension-manager --thunderbird  --user --update https://addons.thunderbird.net/thunderbird/downloads/latest/{{ item }}"
+  with_items:
+    - markdown-here-xul
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install Firefox extensions
+  command: "mozilla-extension-manager --firefox  --user {{ user.name }} --update https://addons.mozilla.org/firefox/downloads/latest/{{ item }}"
+  with_items:
+    - dark-background-light-text
+    - stylish
+    - languagetool
+  become: yes
+  become_user: "{{ user.name }}"

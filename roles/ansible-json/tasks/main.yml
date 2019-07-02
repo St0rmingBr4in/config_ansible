@@ -1,0 +1,6 @@
+---
+- name: Install python-jmespath
+  pacman:
+    update_cache: yes
+    name:
+      - python-jmespath
