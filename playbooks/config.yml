@@ -31,6 +31,7 @@
     - { role: android, tags: ['android'] }
     - { role: dev-python, tags: ['dev-python'] }
     - { role: notifications, tags: ['notifications'] }
+    - { role: mozilla, tags: ['mozilla'] }
 
 - hosts: laptop
   roles:

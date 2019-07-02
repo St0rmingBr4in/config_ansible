@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: bootstrap }
+  - { role: ansible-json }
+  - { role: users }

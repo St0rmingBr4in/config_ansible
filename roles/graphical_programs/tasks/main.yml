@@ -6,11 +6,9 @@
     name:
       - evince
       - feh
-      - firefox
       - gimp
       - gparted
       - scrot
-      - thunderbird
       - transmission-gtk
       - virt-manager
       - vlc
