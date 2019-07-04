@@ -11,27 +11,27 @@
     - laptop
     - desktop
   roles:
-    - { role: users, tags: ['users'] }
+    - { role: android, tags: ['android'] }
     - { role: common, tags: ['common'] }
-    - { role: ntp, tags: ['ntp'] }
+    - { role: cups, tags: ['cups'] }
+    - { role: dev-python, tags: ['dev-python'] }
     - { role: docker, tags: ['docker'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: gaming, tags: ['gaming'] }
+    - { role: graphical_programs, tags: ['graphical_programs'] }
+    - { role: latex, tags: ['latex'] }
+    - { role: lightdm, tags: ['lightdm'] }
+    - { role: mozilla, tags: ['mozilla'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
+    - { role: notifications, tags: ['notifications'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: screensaver, tags: ['screensaver'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: users, tags: ['users'] }
+    - { role: vim, tags: ['vim'] }
     - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
     - { role: xorg, tags: ['xorg'] }
-    - { role: lightdm, tags: ['lightdm'] }
-    - { role: cups, tags: ['cups'] }
-    - { role: gaming, tags: ['gaming'] }
-    - { role: latex, tags: ['latex'] }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: vim, tags: ['vim'] }
-    - { role: graphical_programs, tags: ['graphical_programs'] }
-    - { role: fonts, tags: ['fonts'] }
-    - { role: networkmanager, tags: ['networkmanager'] }
-    - { role: screensaver, tags: ['screensaver'] }
     - { role: yubikey, tags: ['yubikey'] }
-    - { role: android, tags: ['android'] }
-    - { role: dev-python, tags: ['dev-python'] }
-    - { role: notifications, tags: ['notifications'] }
-    - { role: mozilla, tags: ['mozilla'] }
 
 - hosts: laptop
   roles:
