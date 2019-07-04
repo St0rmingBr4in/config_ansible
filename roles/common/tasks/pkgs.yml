@@ -16,6 +16,7 @@
       - htop
       - mlocate
       - mosh
+      - nmap
       - ntfs-3g
       - ntfsprogs
       - p7zip
