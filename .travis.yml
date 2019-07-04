@@ -1,8 +1,11 @@
 ---
 dist: xenial
-language: minimal
+language: python
 
-install: pip install --user ansible ansible-lint yamllint
+python:
+  - "3.7"
+
+install: pip3 install ansible ansible-lint yamllint jmespath
 script:
   - ansible-lint playbooks/config.yml
   - ansible-lint playbooks/install.yml
