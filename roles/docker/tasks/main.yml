@@ -5,6 +5,13 @@
       - docker
       - docker-compose
 
+- name: Install lazydocker
+  aur:
+    name: lazydocker-git
+    use: trizen
+  become_user: aurbuilder
+  become: yes
+
 - name: Install nvidia-docker
   aur:
     name: nvidia-docker
