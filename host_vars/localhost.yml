@@ -20,5 +20,5 @@ no_systemd: True
 
 ssh:
   enable_sshd: True
-  PasswordAuthentication: yes
-  PermitEmptyPasswords: yes
+  PasswordAuthentication: "yes"
+  PermitEmptyPasswords: "yes"
