@@ -54,6 +54,7 @@
       - ttf-oswald
       - ttf-quintessential
       - ttf-signika
+      - ttf-twemoji-color
   become: yes
   become_user: aurbuilder
   tags:
