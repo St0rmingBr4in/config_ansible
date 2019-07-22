@@ -1,0 +1,11 @@
+---
+- name: Install tzupdate
+  pip:
+    name: git+https://github.com/cdown/tzupdate.git@develop
+
+- name: Install tzupdate NetworkManager hook
+  get_url:
+    dest: /etc/NetworkManager/dispatcher.d/
+    mode: 0755
+    url: https://raw.githubusercontent.com/cdown/tzupdate/develop/contrib/09-timezone
+  notify: Restart nm-dispatcher

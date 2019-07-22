@@ -1,0 +1,6 @@
+---
+- name: Restart nm-dispatcher
+  service:
+    name: NetworkManager-dispatcher.service
+    state: restarted
+  when: no_systemd is not defined or not no_systemd

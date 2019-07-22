@@ -44,6 +44,7 @@
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: virtualization, tags: ['virtualization'] }
+    - { role: timezone, tags: ['timezone'] }
 
 - hosts: only_confs
   gather_facts: no
