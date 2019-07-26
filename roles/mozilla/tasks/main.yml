@@ -52,5 +52,12 @@
     - dark-background-light-text
     - stylish
     - languagetool
+    - tridactyl-vim
   become: yes
   become_user: "{{ user.name }}"
+
+- name: Configure tridactyl
+  copy:
+    src: tridactylrc
+    dest: "{{ user.home }}/.tridactylrc"
+    owner: "{{ user.name }}"
