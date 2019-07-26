@@ -41,9 +41,3 @@
       - slack-desktop
   become: yes
   become_user: aurbuilder
-
-- name: Configs
-  copy:
-    src: tridactylrc
-    dest: "{{ user.home }}/.tridactylrc"
-    owner: "{{ user.name }}"
