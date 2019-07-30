@@ -14,7 +14,7 @@
       - vlc
       - youtube-dl
       - zathura
-      - zathura-pdf-poppler
+      - zathura-pdf-mupdf
 
 - name: Install Thunar and dependencies
   pacman:
