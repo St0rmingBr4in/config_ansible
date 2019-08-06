@@ -1,0 +1,8 @@
+[default]
+color
+start-delete '[-'
+stop-delete '-]'
+start-insert '{+'
+stop-insert '+}'
+repeat-markers
+algorithm best

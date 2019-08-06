@@ -5,6 +5,12 @@
     dest: "{{ user.home }}/.zshrc"
     owner: "{{ user.name }}"
 
+- name: Copy dwdiffrc
+  copy:
+    src: dwdiffrc
+    dest: "{{ user.home }}/.dwdiffrc"
+    owner: "{{ user.name }}"
+
 - name: Copy gitconfig
   template:
     src: gitconfig
