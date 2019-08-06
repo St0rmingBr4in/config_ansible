@@ -10,6 +10,7 @@
       - curl
       - dmidecode
       - dosfstools
+      - dwdiff
       - efibootmgr
       - exfat-utils
       - gnu-netcat
