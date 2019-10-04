@@ -28,14 +28,14 @@
 
 - name: Get latest ext editor release
   uri:
-    url: https://api.github.com/repos/exteditor/exteditor/releases/latest
+    url: https://api.github.com/repos/exteditor/exteditor/releases
     return_content: true
   register: exteditor_release
 
 - name: Install ext editor extension
   command: "mozilla-extension-manager --thunderbird --user --update {{ exteditor_release.json | to_json | from_json | json_query(jq) }}"
   vars:
-    jq: "assets[?(ends_with(@.name, 'xpi'))].browser_download_url | [0]"
+    jq: "[0].assets[?(ends_with(@.name, 'xpi'))].browser_download_url | [0]"
   become: yes
   become_user: "{{ user.name }}"
 
