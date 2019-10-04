@@ -7,4 +7,5 @@
       - gobject-introspection
       - python-pylint
       - python-tox
+      - python-black
       - python-virtualenv
