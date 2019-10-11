@@ -17,11 +17,11 @@
     - Restart sshd
 
 - name: Enable and start OpenSSH
-  service: name=sshd.socket enabled=yes state=started
+  service: name=sshd enabled=yes state=started
   when: ssh.enable_sshd and ( no_systemd is not defined or not no_systemd )
 
 - name: Disable and stop OpenSSH
-  service: name=sshd.socket enabled=no state=stopped
+  service: name=sshd enabled=no state=stopped
   when: not ssh.enable_sshd and ( no_systemd is not defined or not no_systemd )
 
 - name: Install sshfs

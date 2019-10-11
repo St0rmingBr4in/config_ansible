@@ -22,6 +22,12 @@
               state=present
               line="background=/usr/share/backgrounds/background.png"
 
+- name: Select LightDM primary display
+  lineinfile: dest=/etc/lightdm/lightdm-gtk-greeter.conf
+              regexp="^active-monitor="
+              state=present
+              line="active-monitor=0"
+
 - name: Hide user images
   lineinfile: dest=/etc/lightdm/lightdm-gtk-greeter.conf
               regexp="^hide-user-image="
