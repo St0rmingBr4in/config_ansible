@@ -33,6 +33,7 @@
       - tree
       - unrar
       - unzip
+      - usbutils
       - wget
       - zsh
 

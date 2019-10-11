@@ -5,6 +5,12 @@
     dest: "{{ user.home }}/.Xdefaults"
     owner: "{{ user.name }}"
 
+- name: Xresources
+  copy:
+    src: Xresources
+    dest: "{{ user.home }}/.Xresources"
+    owner: "{{ user.name }}"
+
 - name: Create config directory
   file:
     path: "{{ user.home }}/.config"
