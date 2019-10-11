@@ -1,0 +1,14 @@
+---
+- name: Install drivers
+  pacman:
+    name:
+      - linux-firmware
+    update_cache: yes
+    state: present
+
+- name: Handle lid switch
+  lineinfile:
+    dest: /etc/systemd/logind.conf
+    regexp: "^HandleLidSwitch="
+    line: "HandleLidSwitch=suspend"
+    state: present
