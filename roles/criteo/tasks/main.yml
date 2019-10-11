@@ -1,0 +1,24 @@
+---
+- name: Install git-review
+  pacman:
+    update_cache: yes
+    state: present
+    name:
+      - git-review
+      - ruby
+
+- name: Install criteo-ssh_key
+  gem:
+    name: criteo-ssh_key
+    gem_source: https://filer-rubygems.prod.crto.in
+    state: present
+
+- name: Copy gemrc
+  copy:
+    src: gemrc
+    dest: /{{ user.home }}/.gemrc
+
+- name: Install bundler
+  gem:
+    name: bundler
+    state: present
