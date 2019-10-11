@@ -17,9 +17,16 @@
     use: trizen
     name:
       - wpa_actiond
+      - bluetooth-autoconnect
   become: yes
   become_user: aurbuilder
 
 - name: Enable bluetooth
   service: name=bluetooth enabled=yes
+  when: no_systemd is not defined or not no_systemd
+
+- name: Enable bluetooth autoconnect
+  service:
+    name: bluetooth-autoconnect
+    enabled: yes
   when: no_systemd is not defined or not no_systemd
