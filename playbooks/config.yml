@@ -18,6 +18,10 @@
   roles:
     - { role: virtualization, tags: ['virtualization'] }
 
+- hosts: criteo-doche
+  roles:
+    - { role: dell-latitude-7480, tags: ['dell-latitude-7480'] }
+
 - hosts:
     - laptop
     - wifi_capable
