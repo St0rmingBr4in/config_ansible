@@ -10,6 +10,23 @@
   roles:
     - { role: bootstrap, tags: ['bootstrap'] }
 
+- hosts: personal
+  roles:
+    - { role: gaming, tags: ['gaming'] }
+    - { role: latex, tags: ['latex'] }
+    - { role: dev-arduino, tags: ['dev-arduino'] }
+    - { role: download_tools, tags: ['download_tools'] }
+
+- hosts: ext_gpu
+  roles:
+    - { role: virtualization, tags: ['virtualization'] }
+
+- hosts:
+    - laptop
+    - wifi_capable
+  roles:
+    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
+
 - hosts:
     - laptop
     - desktop
@@ -20,9 +37,7 @@
     - { role: dev-python, tags: ['dev-python'] }
     - { role: docker, tags: ['docker'] }
     - { role: fonts, tags: ['fonts'] }
-    - { role: gaming, tags: ['gaming'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
-    - { role: latex, tags: ['latex'] }
     - { role: lightdm, tags: ['lightdm'] }
     - { role: mozilla, tags: ['mozilla'] }
     - { role: networkmanager, tags: ['networkmanager'] }
@@ -32,21 +47,51 @@
     - { role: ssh, tags: ['ssh'] }
     - { role: users, tags: ['users'] }
     - { role: vim, tags: ['vim'] }
-    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
     - { role: xorg, tags: ['xorg'] }
     - { role: yubikey, tags: ['yubikey'] }
+    - { role: dev-common, tags: ['dev-common'] }
   connection: '{{ connection_type }}'
   vars:
     connection_type: local
 
 - hosts: laptop
   roles:
+    #- { role: dev-ada, tags: ['dev-ada'] }
+    #- { role: dev-go, tags: ['dev-go'] }
+    #- { role: dev-stm32, tags: ['dev-stm32'] }
+    #- { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
+    #- { role: virtualbox, tags: ['virtualbox'] }
+    - { role: timezone, tags: ['timezone'] }
+
+- hosts: criteo
+  roles:
+    - { role: criteo, tags: ['criteo'] }
+
+- hosts: only_confs
+  gather_facts: no
+  roles:
+    - { role: common, tags: ['common'] }
+    - { role: notifications, tags: ['notifications'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: vim, tags: ['vim'] }
+
+- hosts: test
+  roles:
+    - { role: android, tags: ['android'] }
+    - { role: common, tags: ['common'] }
+    - { role: criteo, tags: ['criteo'] }
+    - { role: cups, tags: ['cups'] }
     - { role: dev-ada, tags: ['dev-ada'] }
     - { role: dev-arduino, tags: ['dev-arduino'] }
     - { role: dev-common, tags: ['dev-common'] }
     - { role: dev-go, tags: ['dev-go'] }
+    - { role: dev-python, tags: ['dev-python'] }
     - { role: dev-stm32, tags: ['dev-stm32'] }
+    - { role: docker, tags: ['docker'] }
     - { role: download_tools, tags: ['download_tools'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: gaming, tags: ['gaming'] }
+    - { role: graphical_programs, tags: ['graphical_programs'] }
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: virtualization, tags: ['virtualization'] }
@@ -59,6 +104,19 @@
   gather_facts: no
   roles:
     - { role: common, tags: ['common'] }
+    - { role: latex, tags: ['latex'] }
+    - { role: lightdm, tags: ['lightdm'] }
+    - { role: mozilla, tags: ['mozilla'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
     - { role: notifications, tags: ['notifications'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: screensaver, tags: ['screensaver'] }
     - { role: ssh, tags: ['ssh'] }
+    - { role: timezone, tags: ['timezone'] }
+    - { role: users, tags: ['users'] }
     - { role: vim, tags: ['vim'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: virtualization, tags: ['virtualization'] }
+    - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
+    - { role: xorg, tags: ['xorg'] }
+    - { role: yubikey, tags: ['yubikey'] }
