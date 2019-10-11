@@ -1,13 +1,27 @@
+[test]
+localhost:2222
+
 [laptop]
 thinkpad-t480
 toshiba
-arista-doche
-localhost:22
+criteo-doche
 
 [desktop]
 desktop-pc
+criteo-desktop-doche
 
 [only_confs]
-us194
 
-test
+[personal]
+thinkpad-t480
+toshiba
+
+[ext_gpu]
+thinkpad-t480
+
+[criteo]
+criteo-doche
+criteo-desktop-doche
+
+[wifi_capable]
+desktop-pc
