@@ -10,15 +10,27 @@
 - name: Install criteo-ssh_key
   gem:
     name: criteo-ssh_key
-    gem_source: https://filer-rubygems.prod.crto.in
+    repository: https://filer-rubygems.prod.crto.in
     state: present
 
 - name: Copy gemrc
   copy:
     src: gemrc
     dest: /{{ user.home }}/.gemrc
+    owner: "{{ user.name }}"
 
 - name: Install bundler
   gem:
     name: bundler
     state: present
+
+- name: Create chef conf dir
+  file:
+    path: /{{ user.home }}/.chef
+    state: directory
+
+- name: Configure chef
+  copy:
+    src: knife.rb
+    dest: /{{ user.home }}/.chef/knife.rb
+    owner: "{{ user.name }}"
