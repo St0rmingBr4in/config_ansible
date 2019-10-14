@@ -3,6 +3,7 @@
 - hosts:
     - laptop
     - desktop
+    - test
   gather_facts: no
   connection: '{{ connection_type }}'
   vars:
@@ -85,6 +86,7 @@
     - { role: common, tags: ['common'] }
     - { role: criteo, tags: ['criteo'] }
     - { role: cups, tags: ['cups'] }
+    - { role: dell-latitude-7480, tags: ['dell-latitude-7480'] }
     - { role: dev-ada, tags: ['dev-ada'] }
     - { role: dev-arduino, tags: ['dev-arduino'] }
     - { role: dev-common, tags: ['dev-common'] }
