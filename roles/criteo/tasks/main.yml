@@ -1,5 +1,5 @@
 ---
-- name: Install git-review
+- name: Install pkgs
   pacman:
     update_cache: yes
     state: present
