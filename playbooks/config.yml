@@ -78,7 +78,6 @@
   roles:
     - { role: android, tags: ['android'] }
     - { role: common, tags: ['common'] }
-    - { role: criteo, tags: ['criteo'] }
     - { role: cups, tags: ['cups'] }
     - { role: dell-latitude-7480, tags: ['dell-latitude-7480'] }
     - { role: dev-ada, tags: ['dev-ada'] }
