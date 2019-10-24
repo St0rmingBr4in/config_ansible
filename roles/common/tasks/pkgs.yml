@@ -19,6 +19,7 @@
       - lsof
       - mlocate
       - mosh
+      - ncdu
       - nmap
       - ntfs-3g
       - ntfsprogs
