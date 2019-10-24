@@ -12,6 +12,7 @@
     name: criteo-ssh_key
     repository: https://filer-rubygems.prod.crto.in
     state: present
+  ignore_errors: yes
 
 - name: Copy gemrc
   copy:
