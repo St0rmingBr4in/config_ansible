@@ -1,4 +1,68 @@
 ---
+
+- name: Partition the disk (boot)
+  parted:
+    device: {{ install.disk }}
+    flags: boot
+    name: boot
+    number: 1
+    part_end: "+100M"
+    state: present
+
+- name: Partition the disk (LUKS)
+  parted:
+    device: {{ install.disk }}
+    name: LUKS
+    number: 2
+    state: present
+
+- name: Create and open LUKS
+  luks_device:
+    device: {{ install.disk }}2
+    state: opened
+    keyfile: luks_key
+    name: cryptolvm
+
+- name: Create volume group
+  lvg:
+    pvs: /dev/mapper/cryptolvm
+    vg: vg-root
+
+- name: Create swap logical volume
+  lvol:
+    lv: lv-swap
+    size: {{ install.swap_size }}
+    vg: vg-root
+
+- name: Create root logical volume
+  lvol:
+    lv: lv-root
+    size: 100%FREE
+    vg: vg-root
+
+- name: mkswap
+  filesystem:
+    dev: /dev/mapper/vg--root-lv--swap
+    fstype: swap
+
+- name: mkfs root
+  filesystem:
+    dev: /dev/mapper/vg--root-lv--root
+    fstype: ext4
+
+- name: Mounts the root filesystem
+  mount:
+    path: /mnt
+    src: /dev/mapper/vg--root-lv--root
+    state: mounted
+
+- name: Mounts the boot filesystem
+  mount:
+    path: /mnt/boot
+    src: {{ install.disk }}1
+
+
+
 - name: Update the system clock
   command: timedatectl set-ntp true
 
