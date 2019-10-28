@@ -8,6 +8,15 @@
       - vim
   when: only_user_confs is not defined or not only_user_confs
 
+- name: Install vim and tools needed for plugins (AUR)
+  aur:
+    use: trizen
+    name:
+      - ycm-generator-git
+  become: yes
+  become_user: aurbuilder
+  when: only_user_confs is not defined or not only_user_confs
+
 - name: Install linters
   pacman:
     update_cache: yes
