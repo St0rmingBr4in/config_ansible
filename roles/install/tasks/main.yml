@@ -1,67 +1,160 @@
 ---
 
+- name: List mapped names
+  shell: "echo /dev/mapper/{{ item.vg | replace('-','--') }}-{{ item.lv | replace('-','--') }}"
+  register: mapped_names
+  with_items:
+    - { vg: "{{ install.vg_root }}", lv: "{{ install.lv_swap }}" }
+    - { vg: "{{ install.vg_root }}", lv: "{{ install.lv_root }}" }
+
+- name: swapoff
+  command: swapoff "{{ item.stdout }}"
+  when: "{{ item.item.lv == install.lv_swap }}"
+  with_items: "{{ mapped_names.results }}"
+  args:
+    removes: "{{ item.stdout }}"
+  failed_when: false
+
+- name: Unmounts the root filesystem
+  mount:
+    path: /mnt
+    src: "{{ item.stdout }}"
+    state: unmounted
+    fstype: ext4
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: Deactivate swap logical volume
+  lvol:
+    lv: "{{ install.lv_swap }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+    state: absent
+    force: yes
+
+- name: Deactivate root logical volume
+  lvol:
+    lv: "{{ install.lv_root }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+    state: absent
+    force: yes
+
+- name: Close LUKS if present
+  luks_device:
+    state: closed
+    name: cryptlvm
+
+- name: Read device information (always use unit when probing)
+  parted:
+    device: "{{ install.disk }}"
+    unit: MiB
+  register: drive_info
+
+- name: Print partitions to be removed
+  debug:
+    var: drive_info
+
+- name: Remove all partitions from disk
+  parted:
+    device: "{{ install.disk }}"
+    number: '{{ item.num }}'
+    state: absent
+  loop: '{{ drive_info.partitions }}'
+
 - name: Partition the disk (boot)
   parted:
-    device: {{ install.disk }}
+    device: "{{ install.disk }}"
     flags: boot
+    label: gpt
     name: boot
     number: 1
-    part_end: "+100M"
+    part_end: "100MiB"
+    part_start: "1MiB"
     state: present
 
 - name: Partition the disk (LUKS)
   parted:
-    device: {{ install.disk }}
+    device: "{{ install.disk }}"
+    flags: lvm
+    label: gpt
     name: LUKS
     number: 2
+    unit: MiB
+    part_end: "100%"
+    part_start: "101MiB"
     state: present
+
+- name: Create luks_key file
+  copy:
+    dest: /tmp/luks_key
+    content: "{{ install.luks_pass }}"
+    owner: root
+    mode: 0600
 
 - name: Create and open LUKS
   luks_device:
-    device: {{ install.disk }}2
+    device: "/dev/disk/by-partlabel/LUKS"
     state: opened
-    keyfile: luks_key
-    name: cryptolvm
+    keyfile: /tmp/luks_key
+    name: cryptlvm
 
 - name: Create volume group
   lvg:
-    pvs: /dev/mapper/cryptolvm
-    vg: vg-root
+    pvs: /dev/mapper/cryptlvm
+    vg: "{{ install.vg_root }}"
 
 - name: Create swap logical volume
   lvol:
-    lv: lv-swap
-    size: {{ install.swap_size }}
-    vg: vg-root
+    lv: "{{ install.lv_swap }}"
+    size: "{{ install.swap_size }}"
+    vg: "{{ install.vg_root }}"
 
 - name: Create root logical volume
   lvol:
-    lv: lv-root
-    size: 100%FREE
-    vg: vg-root
+    lv: "{{ install.lv_root }}"
+    size: +100%FREE
+    vg: "{{ install.vg_root }}"
 
 - name: mkswap
   filesystem:
-    dev: /dev/mapper/vg--root-lv--swap
+    dev: "{{ item.stdout }}"
     fstype: swap
+  when: "{{ item.item.lv == install.lv_swap }}"
+  with_items: "{{ mapped_names.results }}"
 
 - name: mkfs root
   filesystem:
-    dev: /dev/mapper/vg--root-lv--root
+    dev: "{{ item.stdout }}"
     fstype: ext4
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: mkfs boot
+  filesystem:
+    dev: "/dev/disk/by-partlabel/boot"
+    fstype: vfat
+
+- name: swapon
+  command: swapon "{{ item.stdout }}"
+  when: "{{ item.item.lv == install.lv_swap }}"
+  with_items: "{{ mapped_names.results }}"
 
 - name: Mounts the root filesystem
   mount:
     path: /mnt
-    src: /dev/mapper/vg--root-lv--root
+    src: "{{ item.stdout }}"
     state: mounted
+    fstype: ext4
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
 
 - name: Mounts the boot filesystem
   mount:
     path: /mnt/boot
-    src: {{ install.disk }}1
-
-
+    state: mounted
+    fstype: vfat
+    src: "/dev/disk/by-partlabel/boot"
 
 - name: Update the system clock
   command: timedatectl set-ntp true
@@ -80,7 +173,7 @@
       - archlinux-keyring
 
 - name: Install the base packages
-  command: pacstrap /mnt base base-devel ansible vim openssh
+  command: pacstrap -c /mnt base base-devel ansible vim openssh
 
 - name: Fstab  # TODO : not working!!!
   command: genfstab -U /mnt >> /mnt/etc/fstab
@@ -93,3 +186,21 @@
 
 - name: Chroot
   command: arch-chroot /mnt /install.sh
+
+- name: Get UUID of LUKS partition
+  command: blkid /dev/disk/by-partlabel/LUKS -s UUID -o value
+  register: luks_uuid
+
+- name: boot entry
+  template:
+    src: archlinux.conf
+    dest: /mnt/boot/loader/entries/archlinux.conf
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: ucode
+  lineinfile:
+    path: /mnt/boot/loader/entries/archlinux.conf
+    line: "initrd /intel-ucode.img"
+    insertbefore: "initrd /initramfs-linux.img"
+  when: cpu isdefined and cpu == intel
