@@ -13,6 +13,7 @@
     use: trizen
     name:
       - ycm-generator-git
+      - compiledb
   become: yes
   become_user: aurbuilder
   when: only_user_confs is not defined or not only_user_confs

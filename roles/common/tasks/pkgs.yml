@@ -17,6 +17,7 @@
       - gnu-netcat
       - htop
       - lsof
+      - man-pages
       - mlocate
       - mosh
       - ncdu
