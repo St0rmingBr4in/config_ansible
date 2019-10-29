@@ -1,6 +1,6 @@
 #! /bin/sh
 
-set -e
+set -e -x
 
 # Set the time zone
 ln -sf /usr/share/zoneinfo/{{ timezone.region }}/{{ timezone.city }} /etc/localtime
