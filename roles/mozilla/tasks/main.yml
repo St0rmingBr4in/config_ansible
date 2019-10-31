@@ -52,7 +52,6 @@
     - dark-background-light-text
     - stylish
     - languagetool
-    - tridactyl-vim
     - adblock-plus
   become: yes
   become_user: "{{ user.name }}"
