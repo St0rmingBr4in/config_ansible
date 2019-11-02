@@ -18,7 +18,7 @@ echo "{{ hostname }}" > /etc/hostname #TODO: Move to ansible
 #/etc/mkinitcpio.conf
 
 # Initramfs
-mkinitcpio -p linux
+#mkinitcpio -p linux
 
 # Root password
 usermod --password {{ user.password }} root #TODO: make it work

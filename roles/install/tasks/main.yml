@@ -204,7 +204,7 @@
       - archlinux-keyring
 
 - name: Install the base packages
-  command: pacstrap -c /mnt base base-devel ansible vim openssh linux
+  command: pacstrap -c /mnt base base-devel ansible vim openssh linux lvm2
 
 - name: Fstab
   shell: genfstab -U /mnt > /mnt/etc/fstab
@@ -228,6 +228,15 @@
     dest: /mnt/boot/loader/entries/archlinux.conf
   when: "{{ item.item.lv == install.lv_root }}"
   with_items: "{{ mapped_names.results }}"
+
+- name: Configure hooks
+  lineinfile:
+    regexp: "^HOOKS="
+    line: "HOOKS=(base udev autodetect keyboard keymap modconf block encrypt lvm2 filesystems keyboard fsck)"
+    path: /mnt/etc/mkinitcpio.conf
+
+- name: Configure hooks (Regenerate initramfs)
+  command: arch-chroot /mnt mkinitcpio -p linux
 
 - name: Install ucode
   command: pacstrap /mnt intel-ucode
