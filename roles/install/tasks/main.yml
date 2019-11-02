@@ -10,5 +10,3 @@
 - import_tasks: partition.yml
 
 - import_tasks: prepare.yml
-
-- import_tasks: install.yml
