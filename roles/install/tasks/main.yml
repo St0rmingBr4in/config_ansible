@@ -9,11 +9,18 @@
 
 - name: swapoff
   command: swapoff "{{ item.stdout }}"
-  when: "{{ item.item.lv == install.lv_swap }}"
+  when: item.item.lv == install.lv_swap
   with_items: "{{ mapped_names.results }}"
   args:
     removes: "{{ item.stdout }}"
   failed_when: false
+
+- name: Unmounts the boot filesystem
+  mount:
+    path: /mnt/boot
+    src: "/dev/disk/by-partlabel/boot"
+    state: unmounted
+    fstype: vfat
 
 - name: Unmounts the root filesystem
   mount:
@@ -21,7 +28,7 @@
     src: "{{ item.stdout }}"
     state: unmounted
     fstype: ext4
-  when: "{{ item.item.lv == install.lv_root }}"
+  when: item.item.lv == install.lv_root
   with_items: "{{ mapped_names.results }}"
 
 - name: Deactivate swap logical volume
@@ -29,16 +36,32 @@
     lv: "{{ install.lv_swap }}"
     vg: "{{ install.vg_root }}"
     active: no
-    state: absent
-    force: yes
+  failed_when: false
 
 - name: Deactivate root logical volume
   lvol:
     lv: "{{ install.lv_root }}"
     vg: "{{ install.vg_root }}"
     active: no
+  failed_when: false
+
+- name: Remove swap logical volume
+  lvol:
+    lv: "{{ install.lv_swap }}"
+    vg: "{{ install.vg_root }}"
+    active: no
     state: absent
     force: yes
+  when: install.repartition is defined and install.repartition
+
+- name: Remove root logical volume
+  lvol:
+    lv: "{{ install.lv_root }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+    state: absent
+    force: yes
+  when: install.repartition is defined and install.repartition
 
 - name: Close LUKS if present
   luks_device:
@@ -50,17 +73,20 @@
     device: "{{ install.disk }}"
     unit: MiB
   register: drive_info
+  when: install.repartition is defined and install.repartition
 
 - name: Print partitions to be removed
   debug:
     var: drive_info
+  when: install.repartition is defined and install.repartition
 
 - name: Remove all partitions from disk
   parted:
     device: "{{ install.disk }}"
-    number: '{{ item.num }}'
+    number: "{{ item.num }}"
     state: absent
-  loop: '{{ drive_info.partitions }}'
+  loop: "{{ drive_info.partitions }}"
+  when: install.repartition is defined and install.repartition
 
 - name: Partition the disk (boot)
   parted:
@@ -72,6 +98,7 @@
     part_end: "100MiB"
     part_start: "1MiB"
     state: present
+  when: install.repartition is defined and install.repartition
 
 - name: Partition the disk (LUKS)
   parted:
@@ -84,6 +111,7 @@
     part_end: "100%"
     part_start: "101MiB"
     state: present
+  when: install.repartition is defined and install.repartition
 
 - name: Create luks_key file
   copy:
@@ -127,13 +155,14 @@
   filesystem:
     dev: "{{ item.stdout }}"
     fstype: ext4
-  when: "{{ item.item.lv == install.lv_root }}"
+  when: "{{ item.item.lv == install.lv_root }} and install.repartition is defined and install.repartition"
   with_items: "{{ mapped_names.results }}"
 
 - name: mkfs boot
   filesystem:
     dev: "/dev/disk/by-partlabel/boot"
     fstype: vfat
+  when: install.repartition is defined and install.repartition
 
 - name: swapon
   command: swapon "{{ item.stdout }}"
@@ -146,6 +175,7 @@
     src: "{{ item.stdout }}"
     state: mounted
     fstype: ext4
+    fstab: /tmp/tmp-tab
   when: "{{ item.item.lv == install.lv_root }}"
   with_items: "{{ mapped_names.results }}"
 
@@ -155,6 +185,7 @@
     state: mounted
     fstype: vfat
     src: "/dev/disk/by-partlabel/boot"
+    fstab: /tmp/tmp-tab
 
 - name: Update the system clock
   command: timedatectl set-ntp true
@@ -173,10 +204,10 @@
       - archlinux-keyring
 
 - name: Install the base packages
-  command: pacstrap -c /mnt base base-devel ansible vim openssh
+  command: pacstrap -c /mnt base base-devel ansible vim openssh linux
 
-- name: Fstab  # TODO : not working!!!
-  command: genfstab -U /mnt >> /mnt/etc/fstab
+- name: Fstab
+  shell: genfstab -U /mnt > /mnt/etc/fstab
 
 - name: Copy install script
   template:
@@ -198,9 +229,12 @@
   when: "{{ item.item.lv == install.lv_root }}"
   with_items: "{{ mapped_names.results }}"
 
+- name: Install ucode
+  command: pacstrap /mnt intel-ucode
+
 - name: ucode
   lineinfile:
     path: /mnt/boot/loader/entries/archlinux.conf
     line: "initrd /intel-ucode.img"
     insertbefore: "initrd /initramfs-linux.img"
-  when: cpu isdefined and cpu == intel
+  when: cpu is defined and cpu == "intel"
