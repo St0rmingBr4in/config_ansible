@@ -23,7 +23,12 @@ ssh:
   PasswordAuthentication: "yes"
   PermitEmptyPasswords: "yes"
 
+hostname: test
+
+cpu: intel
+
 install:
+  repartition: no
   disk: /dev/sdb
   swap_size: 8G
   luks_pass: !vault |
