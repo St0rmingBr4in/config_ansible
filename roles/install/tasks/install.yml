@@ -1,0 +1,71 @@
+---
+
+- name: Install the base packages
+  command: pacstrap -c "{{ install.mountpoint }}" base base-devel ansible vim openssh linux lvm2
+
+- name: Generate fstab
+  shell: genfstab -U "{{ install.mountpoint }}" > "{{ install.mountpoint }}/etc/fstab"
+
+- name: Link localtime
+  file:
+    state: link
+    follow: no
+    path: "{{ install.mountpoint }}/etc/localtime"
+    src: "/usr/share/zoneinfo/{{ timezone.region }}/{{ timezone.city }}"
+
+- name: Set the Hardware Clock from the System Clock
+  command: arch-chroot "{{ install.mountpoint }}" hwclock --systohc
+
+- name: Locale generation configuration
+  lineinfile:
+    path: "{{ install.mountpoint }}/etc/locale.gen"
+    line: "en_US.UTF-8 UTF-8"
+
+- name: Locale generation
+  command: arch-chroot "{{ install.mountpoint }}" locale-gen
+
+- name: Locale configuration
+  copy:
+    dest: "{{ install.mountpoint }}/etc/locale.conf"
+    content: "LANG=en_US.UTF-8"
+
+- name: Set hostname
+  copy:
+    dest: "{{ install.mountpoint }}/etc/hostname"
+    content: "{{ hostname }}"
+
+- name: Generate pass hash
+  delegate_to: localhost
+
+- name: Change root pass
+  command: arch-chroot "{{ install.mountpoint }}" usermod --password "{{ user.password }}" root
+
+- name: Get UUID of LUKS partition
+  command: blkid /dev/disk/by-partlabel/LUKS -s UUID -o value
+  register: luks_uuid
+
+- name: boot entry
+  template:
+    src: archlinux.conf
+    dest: "{{ install.mountpoint }}/boot/loader/entries/archlinux.conf"
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: Configure hooks
+  lineinfile:
+    regexp: "^HOOKS="
+    line: "HOOKS=(base udev autodetect keyboard keymap modconf block encrypt lvm2 filesystems keyboard fsck)"
+    path: "{{ install.mountpoint }}/etc/mkinitcpio.conf"
+
+- name: Configure hooks (Regenerate initramfs)
+  command: arch-chroot "{{ install.mountpoint }}" mkinitcpio -p linux
+
+- name: Install ucode
+  command: pacstrap "{{ install.mountpoint }}" intel-ucode
+
+- name: ucode
+  lineinfile:
+    path: "{{ install.mountpoint }}/boot/loader/entries/archlinux.conf"
+    line: "initrd /intel-ucode.img"
+    insertbefore: "initrd /initramfs-linux.img"
+  when: cpu is defined and cpu == "intel"

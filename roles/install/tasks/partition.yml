@@ -1,0 +1,183 @@
+---
+
+- name: swapoff
+  command: swapoff "{{ item.stdout }}"
+  when: item.item.lv == install.lv_swap
+  with_items: "{{ mapped_names.results }}"
+  args:
+    removes: "{{ item.stdout }}"
+  failed_when: false
+
+- name: Unmounts the boot filesystem
+  mount:
+    path: "{{ install.mountpoint }}/boot"
+    src: "/dev/disk/by-partlabel/boot"
+    state: unmounted
+    fstype: vfat
+
+- name: Unmounts the root filesystem
+  mount:
+    path: "{{ install.mountpoint }}"
+    src: "{{ item.stdout }}"
+    state: unmounted
+    fstype: ext4
+  when: item.item.lv == install.lv_root
+  with_items: "{{ mapped_names.results }}"
+
+- name: Deactivate swap logical volume
+  lvol:
+    lv: "{{ install.lv_swap }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+  failed_when: false
+
+- name: Deactivate root logical volume
+  lvol:
+    lv: "{{ install.lv_root }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+  failed_when: false
+
+- name: Remove swap logical volume
+  lvol:
+    lv: "{{ install.lv_swap }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+    state: absent
+    force: yes
+  when: install.repartition is defined and install.repartition
+
+- name: Remove root logical volume
+  lvol:
+    lv: "{{ install.lv_root }}"
+    vg: "{{ install.vg_root }}"
+    active: no
+    state: absent
+    force: yes
+  when: install.repartition is defined and install.repartition
+
+- name: Close LUKS if present
+  luks_device:
+    state: closed
+    name: cryptlvm
+
+- name: Read device information (always use unit when probing)
+  parted:
+    device: "{{ install.disk }}"
+    unit: MiB
+  register: drive_info
+  when: install.repartition is defined and install.repartition
+
+- name: Print partitions to be removed
+  debug:
+    var: drive_info
+  when: install.repartition is defined and install.repartition
+
+- name: Remove all partitions from disk
+  parted:
+    device: "{{ install.disk }}"
+    number: "{{ item.num }}"
+    state: absent
+  loop: "{{ drive_info.partitions }}"
+  when: install.repartition is defined and install.repartition
+
+- name: Partition the disk (boot)
+  parted:
+    device: "{{ install.disk }}"
+    flags: boot
+    label: gpt
+    name: boot
+    number: 1
+    part_end: "100MiB"
+    part_start: "1MiB"
+    state: present
+  when: install.repartition is defined and install.repartition
+
+- name: Partition the disk (LUKS)
+  parted:
+    device: "{{ install.disk }}"
+    flags: lvm
+    label: gpt
+    name: LUKS
+    number: 2
+    unit: MiB
+    part_end: "100%"
+    part_start: "101MiB"
+    state: present
+  when: install.repartition is defined and install.repartition
+
+- name: Create luks_key file
+  copy:
+    dest: /tmp/luks_key
+    content: "{{ install.luks_pass }}"
+    owner: root
+    mode: 0600
+
+- name: Create and open LUKS
+  luks_device:
+    device: "/dev/disk/by-partlabel/LUKS"
+    state: opened
+    keyfile: /tmp/luks_key
+    name: cryptlvm
+
+- name: Create volume group
+  lvg:
+    pvs: /dev/mapper/cryptlvm
+    vg: "{{ install.vg_root }}"
+
+- name: Create swap logical volume
+  lvol:
+    lv: "{{ install.lv_swap }}"
+    size: "{{ install.swap_size }}"
+    vg: "{{ install.vg_root }}"
+
+- name: Create root logical volume
+  lvol:
+    lv: "{{ install.lv_root }}"
+    size: +100%FREE
+    vg: "{{ install.vg_root }}"
+
+- name: mkswap
+  filesystem:
+    dev: "{{ item.stdout }}"
+    fstype: swap
+  when: "{{ item.item.lv == install.lv_swap }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: mkfs root
+  filesystem:
+    dev: "{{ item.stdout }}"
+    fstype: ext4
+  when: "{{ item.item.lv == install.lv_root }} and install.repartition is defined and install.repartition"
+  with_items: "{{ mapped_names.results }}"
+
+- name: mkfs boot
+  filesystem:
+    dev: "/dev/disk/by-partlabel/boot"
+    fstype: vfat
+  when: install.repartition is defined and install.repartition
+
+- name: swapon
+  command: swapon "{{ item.stdout }}"
+  when: "{{ item.item.lv == install.lv_swap }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: Mounts the root filesystem
+  mount:
+    path: "{{ install.mountpoint }}"
+    src: "{{ item.stdout }}"
+    state: mounted
+    fstype: ext4
+    boot: no
+    fstab: /tmp/tmp-tab
+  when: "{{ item.item.lv == install.lv_root }}"
+  with_items: "{{ mapped_names.results }}"
+
+- name: Mounts the boot filesystem
+  mount:
+    path: "{{ install.mountpoint }}/boot"
+    state: mounted
+    fstype: vfat
+    src: "/dev/disk/by-partlabel/boot"
+    boot: no
+    fstab: /tmp/tmp-tab
