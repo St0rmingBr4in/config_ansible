@@ -1,7 +1,12 @@
 ---
 
-- name: Disable swap
-  command: swapoff -a
+- name: swapoff
+  command: swapoff "{{ item.stdout }}"
+  when: item.item.lv == install.lv_swap
+  with_items: "{{ mapped_names.results }}"
+  args:
+    removes: "{{ item.stdout }}"
+  failed_when: false
 
 - name: Unmounts the boot filesystem
   mount:
