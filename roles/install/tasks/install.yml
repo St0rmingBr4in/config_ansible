@@ -36,15 +36,17 @@
 
 - name: Generate pass hash
   delegate_to: localhost
+  command: python3 -c 'import crypt; print(crypt.crypt("{{ install.password }}", crypt.mksalt(crypt.METHOD_SHA512)))'
+  register: hash
 
-- name: Change root pass
-  command: arch-chroot "{{ install.mountpoint }}" usermod --password "{{ user.password }}" root
+- name: Change root password
+  command: arch-chroot "{{ install.mountpoint }}" usermod --password "{{ hash.stdout }}" root
 
 - name: Get UUID of LUKS partition
   command: blkid /dev/disk/by-partlabel/LUKS -s UUID -o value
   register: luks_uuid
 
-- name: boot entry
+- name: Copy boot entry
   template:
     src: archlinux.conf
     dest: "{{ install.mountpoint }}/boot/loader/entries/archlinux.conf"
@@ -62,8 +64,9 @@
 
 - name: Install ucode
   command: pacstrap "{{ install.mountpoint }}" intel-ucode
+  when: cpu is defined and cpu == "intel"
 
-- name: ucode
+- name: Add ucode initrd
   lineinfile:
     path: "{{ install.mountpoint }}/boot/loader/entries/archlinux.conf"
     line: "initrd /intel-ucode.img"

@@ -28,7 +28,7 @@ hostname: test
 cpu: intel
 
 install:
-  repartition: no
+  repartition: yes
   disk: /dev/sdb
   mountpoint: /mnt
   swap_size: 8G

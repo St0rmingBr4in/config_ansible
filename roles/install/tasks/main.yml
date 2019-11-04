@@ -7,8 +7,10 @@
     - { vg: "{{ install.vg_root }}", lv: "{{ install.lv_swap }}" }
     - { vg: "{{ install.vg_root }}", lv: "{{ install.lv_root }}" }
 
-- import_task: partition
+- import_tasks: partition.yml
 
-- import_task: prepare
+- import_tasks: prepare.yml
 
-- import_task: install
+- import_tasks: install.yml
+
+- import_tasks: local_ssh.yml

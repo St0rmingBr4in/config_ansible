@@ -1,12 +1,7 @@
 ---
 
-- name: swapoff
-  command: swapoff "{{ item.stdout }}"
-  when: item.item.lv == install.lv_swap
-  with_items: "{{ mapped_names.results }}"
-  args:
-    removes: "{{ item.stdout }}"
-  failed_when: false
+- name: Disable swap
+  command: swapoff -a
 
 - name: Unmounts the boot filesystem
   mount:
@@ -137,27 +132,27 @@
     size: +100%FREE
     vg: "{{ install.vg_root }}"
 
-- name: mkswap
+- name: Format swap
   filesystem:
     dev: "{{ item.stdout }}"
     fstype: swap
   when: "{{ item.item.lv == install.lv_swap }}"
   with_items: "{{ mapped_names.results }}"
 
-- name: mkfs root
+- name: Format root
   filesystem:
     dev: "{{ item.stdout }}"
     fstype: ext4
   when: "{{ item.item.lv == install.lv_root }} and install.repartition is defined and install.repartition"
   with_items: "{{ mapped_names.results }}"
 
-- name: mkfs boot
+- name: Format boot
   filesystem:
     dev: "/dev/disk/by-partlabel/boot"
     fstype: vfat
   when: install.repartition is defined and install.repartition
 
-- name: swapon
+- name: Activate swap
   command: swapon "{{ item.stdout }}"
   when: "{{ item.item.lv == install.lv_swap }}"
   with_items: "{{ mapped_names.results }}"
