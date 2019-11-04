@@ -2,10 +2,12 @@
 thinkpad-t480
 toshiba
 arista-doche
-localhost:2222
+localhost:22
 
 [desktop]
 desktop-pc
 
 [only_confs]
 us194
+
+test
