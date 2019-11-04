@@ -30,6 +30,7 @@ cpu: intel
 install:
   repartition: no
   disk: /dev/sdb
+  mountpoint: /mnt
   swap_size: 8G
   luks_pass: !vault |
     $ANSIBLE_VAULT;1.1;AES256
