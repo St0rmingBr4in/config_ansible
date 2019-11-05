@@ -35,6 +35,7 @@ xterm*faceName:    xft:Incosolata:size=13
 !------------------------------------------------------------------------------
 ! u r x v t
 
+URxvt.perl-ext-common: resize-font
 URxvt*geometry:        112x22
 URxvt*termName:        linux
 URxvt.color12:         rgb:5c/5c/ff
