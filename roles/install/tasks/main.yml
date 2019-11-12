@@ -12,5 +12,3 @@
 - import_tasks: prepare.yml
 
 - import_tasks: install.yml
-
-- import_tasks: local_ssh.yml

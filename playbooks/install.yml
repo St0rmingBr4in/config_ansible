@@ -1,4 +1,10 @@
 ---
+
 - hosts: all
   roles:
     - { role: install, tags: ['install'] }
+
+- import_playbook: config.yml
+  vars:
+    connection_type: chroot
+    ansible_host: /mnt

@@ -4,6 +4,9 @@
     - laptop
     - desktop
   gather_facts: no
+  connection: '{{ connection_type }}'
+  vars:
+    connection_type: local
   roles:
     - { role: bootstrap, tags: ['bootstrap'] }
 
@@ -32,6 +35,9 @@
     - { role: wifi_bluetooth, tags: ['wifi_bluetooth'] }
     - { role: xorg, tags: ['xorg'] }
     - { role: yubikey, tags: ['yubikey'] }
+  connection: '{{ connection_type }}'
+  vars:
+    connection_type: local
 
 - hosts: laptop
   roles:
@@ -45,6 +51,9 @@
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: virtualization, tags: ['virtualization'] }
     - { role: timezone, tags: ['timezone'] }
+  connection: '{{ connection_type }}'
+  vars:
+    connection_type: local
 
 - hosts: only_confs
   gather_facts: no
