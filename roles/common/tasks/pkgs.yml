@@ -28,6 +28,7 @@
       - rsync
       - screen
       - smartmontools
+      - strace
       - tcpdump
       - traceroute
       - tree
