@@ -15,6 +15,7 @@
       - exfat-utils
       - gnu-netcat
       - htop
+      - lsof
       - mlocate
       - mosh
       - nmap

@@ -115,6 +115,11 @@
     keyfile: /tmp/luks_key
     name: cryptlvm
 
+- name: Remove luks_key file
+  file:
+    state: absent
+    path: /tmp/luks_key
+
 - name: Create volume group
   lvg:
     pvs: /dev/mapper/cryptlvm
