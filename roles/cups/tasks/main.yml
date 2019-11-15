@@ -8,7 +8,6 @@
       - ghostscript
       - gscan2pdf
       - gsfonts
-      - gtk3-print-backends
       - gutenprint
       - hplip
       - sane
