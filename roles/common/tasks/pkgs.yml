@@ -23,7 +23,6 @@
       - ncdu
       - nmap
       - ntfs-3g
-      - ntfsprogs
       - p7zip
       - parallel
       - pkgfile

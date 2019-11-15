@@ -42,6 +42,9 @@
 - name: Change root password
   command: arch-chroot "{{ install.mountpoint }}" usermod --password "{{ hash.stdout }}" root
 
+- name: Install systemd-boot
+  command: arch-chroot "{{ install.mountpoint }}" bootctl --path=/boot install
+
 - name: Get UUID of LUKS partition
   command: blkid /dev/disk/by-partlabel/LUKS -s UUID -o value
   register: luks_uuid
