@@ -3,6 +3,11 @@
   pip:
     name: git+https://github.com/cdown/tzupdate.git@develop
 
+- name: mkdir /etc/NetworkManager/dispatcher.d
+  file:
+    path: /etc/NetworkManager/dispatcher.d
+    state: directory
+
 - name: Install tzupdate NetworkManager hook
   get_url:
     dest: /etc/NetworkManager/dispatcher.d/
