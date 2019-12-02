@@ -141,14 +141,14 @@
   filesystem:
     dev: "{{ item.stdout }}"
     fstype: swap
-  when: "{{ item.item.lv == install.lv_swap }}"
+  when: item.item.lv == install.lv_swap
   with_items: "{{ mapped_names.results }}"
 
 - name: Format root
   filesystem:
     dev: "{{ item.stdout }}"
     fstype: ext4
-  when: "{{ item.item.lv == install.lv_root }} and install.repartition is defined and install.repartition"
+  when: item.item.lv == install.lv_root and install.repartition is defined and install.repartition
   with_items: "{{ mapped_names.results }}"
 
 - name: Format boot
@@ -159,7 +159,7 @@
 
 - name: Activate swap
   command: swapon "{{ item.stdout }}"
-  when: "{{ item.item.lv == install.lv_swap }}"
+  when: item.item.lv == install.lv_swap
   with_items: "{{ mapped_names.results }}"
 
 - name: Mounts the root filesystem
@@ -170,7 +170,7 @@
     fstype: ext4
     boot: no
     fstab: /tmp/tmp-tab
-  when: "{{ item.item.lv == install.lv_root }}"
+  when: item.item.lv == install.lv_root
   with_items: "{{ mapped_names.results }}"
 
 - name: Mounts the boot filesystem

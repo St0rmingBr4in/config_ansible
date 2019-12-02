@@ -53,7 +53,7 @@
   template:
     src: archlinux.conf
     dest: "{{ install.mountpoint }}/boot/loader/entries/archlinux.conf"
-  when: "{{ item.item.lv == install.lv_root }}"
+  when: item.item.lv == install.lv_root
   with_items: "{{ mapped_names.results }}"
 
 - name: Configure hooks
