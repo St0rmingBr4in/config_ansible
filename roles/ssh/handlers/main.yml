@@ -1,4 +1,4 @@
 ---
 - name: Restart sshd
-  service: name=sshd.socket state=restarted
+  service: name=sshd state=restarted
   when: ssh.enable_sshd and ( no_systemd is not defined or not no_systemd )

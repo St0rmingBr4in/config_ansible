@@ -5,6 +5,7 @@
     state: present
     name:
       - ansible
+      - dhcpcd
       - ansible-lint
       - bind-tools
       - conntrack-tools

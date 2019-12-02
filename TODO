@@ -2,3 +2,4 @@ Config slack
 Config thunderbird
 Config firefox
 Config wifi
+Blacklist pcspkr

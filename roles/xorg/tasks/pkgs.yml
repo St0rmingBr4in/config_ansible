@@ -41,6 +41,6 @@
     name:
       - light
       - otf-inconsolata-powerline-git
-      - urxvt-resize-font
+      - urxvt-resize-font-git
   become: yes
   become_user: aurbuilder
