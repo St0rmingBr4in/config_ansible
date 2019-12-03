@@ -4,7 +4,7 @@
     update_cache: yes
     state: present
     name:
-      - compton
+      - picom
       - xbindkeys
       - xorg-server
       - xsel
