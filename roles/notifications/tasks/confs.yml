@@ -6,25 +6,36 @@
     owner: "{{ user.name }}"
     recurse: yes
 
+- name: Set fact for xfce4-notifyd config
+  set_fact:
+    xfce4-notifyd-config: "{{ user.home }}/\
+      .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+
 - name: Check that xfce4-notifyd.xml exists
   stat:
-    path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+    path: "{{ xfce4-notifyd-config }}"
   register: stat_result
 
 - name: Fill xfce4-notifyd.xml
   copy:
-    dest: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
+    dest: "{{ xfce4-notifyd-config }}"
     content: "<channel name=\"xfce4-notifyd\" version=\"1.0\"></channel>"
   when: not stat_result.stat.exists
 
 - name: Config xfce4-notifyd
   xml:
-    path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
-    xpath: /channel/property[@name="do-slideout" and @type="bool" and @value="true"]
+    path: "{{ xfce4-notifyd-config }}"
+    xpath: /channel/property[
+      @name="do-slideout" and
+      @type="bool" and
+      @value="true"]
     state: present
 
 - name: Config xfce4-notifyd
   xml:
-    path: "{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"
-    xpath: /channel/property[@name="do-slideout" and @type="bool" and @value="false"]
+    path: "{{ xfce4-notifyd-config }}"
+    xpath: /channel/property[
+      @name="do-slideout" and
+      @type="bool" and
+      @value="false"]
     state: absent

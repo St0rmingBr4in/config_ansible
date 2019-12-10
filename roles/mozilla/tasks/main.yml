@@ -24,7 +24,8 @@
   get_url:
     dest: /usr/local/bin
     mode: 0755
-    url: https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager
+    url: "https://raw.githubusercontent.com/\
+      NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager"
 
 - name: Get latest ext editor release
   uri:
@@ -33,21 +34,33 @@
   register: exteditor_release
 
 - name: Install ext editor extension
-  command: "mozilla-extension-manager --thunderbird --user --update {{ exteditor_release.json | to_json | from_json | json_query(jq) }}"
+  command: "mozilla-extension-manager \
+    --thunderbird \
+    --user \
+    --update \
+    {{ exteditor_release.json | to_json | from_json | json_query(jq) }}"
   vars:
     jq: "[0].assets[?(ends_with(@.name, 'xpi'))].browser_download_url | [0]"
   become: yes
   become_user: "{{ user.name }}"
 
 - name: Install Thunderbird extensions
-  command: "mozilla-extension-manager --thunderbird  --user --update https://addons.thunderbird.net/thunderbird/downloads/latest/{{ item }}"
+  command: "mozilla-extension-manager \
+    --thunderbird \
+    --user \
+    --update \
+    https://addons.thunderbird.net/thunderbird/downloads/latest/{{ item }}"
   with_items:
     - markdown-here-xul
   become: yes
   become_user: "{{ user.name }}"
 
 - name: Install Firefox extensions
-  command: "mozilla-extension-manager --firefox  --user {{ user.name }} --update https://addons.mozilla.org/firefox/downloads/latest/{{ item }}"
+  command: "mozilla-extension-manager \
+    --firefox \
+    --user {{ user.name }} \
+    --update \
+    https://addons.mozilla.org/firefox/downloads/latest/{{ item }}"
   with_items:
     - dark-background-light-text
     - stylish

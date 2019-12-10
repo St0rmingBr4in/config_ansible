@@ -1,10 +1,23 @@
 ---
 
 - name: Install the base packages
-  command: pacstrap -c "{{ install.mountpoint }}" base base-devel ansible vim openssh linux lvm2
+  command: pacstrap -c "{{ install.mountpoint }}"
+    ansible
+    base
+    base-devel
+    linux
+    lvm2
+    openssh
+    vim
 
 - name: Generate fstab
-  shell: genfstab -U "{{ install.mountpoint }}" > "{{ install.mountpoint }}/etc/fstab"
+  command: genfstab -U "{{ install.mountpoint }}"
+  register: fstab
+
+- name: Write fstab
+  copy:
+    content: "{{ fstab.stdout }}"
+    dest: "{{ install.mountpoint }}/etc/fstab"
 
 - name: Link localtime
   file:
@@ -36,11 +49,15 @@
 
 - name: Generate pass hash
   delegate_to: localhost
-  command: python3 -c 'import crypt; print(crypt.crypt("{{ install.password }}", crypt.mksalt(crypt.METHOD_SHA512)))'
+  command: "python3 -c
+    'import crypt; \
+    print(crypt.crypt(\"{{ install.password }}\", \
+    crypt.mksalt(crypt.METHOD_SHA512)))'"
   register: hash
 
 - name: Change root password
-  command: arch-chroot "{{ install.mountpoint }}" usermod --password "{{ hash.stdout }}" root
+  command: arch-chroot "{{ install.mountpoint }}"
+    usermod --password "{{ hash.stdout }}" root
 
 - name: Install systemd-boot
   command: arch-chroot "{{ install.mountpoint }}" bootctl --path=/boot install
@@ -59,7 +76,19 @@
 - name: Configure hooks
   lineinfile:
     regexp: "^HOOKS="
-    line: "HOOKS=(base udev autodetect keyboard keymap modconf block encrypt lvm2 filesystems keyboard fsck)"
+    line: "HOOKS=(\
+      base \
+      udev \
+      autodetect \
+      keyboard \
+      keymap \
+      modconf \
+      block \
+      encrypt \
+      lvm2 \
+      filesystems \
+      keyboard \
+      fsck)"
     path: "{{ install.mountpoint }}/etc/mkinitcpio.conf"
 
 - name: Configure hooks (Regenerate initramfs)
