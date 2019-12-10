@@ -11,4 +11,5 @@ script:
   - ansible-lint playbooks/install.yml
   - yamllint .
   - docker build ci -t testing
-  - docker run -v `pwd`:/config_ansible:ro testing ansible-playbook --diff playbooks/config.yml -l localhost
+  - docker run -v `pwd`:/config_ansible:ro testing
+    ansible-playbook --diff playbooks/config.yml -l localhost

@@ -15,5 +15,4 @@ rules:
   indentation:
     spaces: 2
     indent-sequences: consistent
-  line-length: disable
   truthy: disable

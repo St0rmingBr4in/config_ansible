@@ -1,7 +1,9 @@
 ---
 
 - name: List mapped names
-  command: echo /dev/mapper/{{ item.vg | replace('-','--') }}-{{ item.lv | replace('-','--') }}
+  command: "echo
+    /dev/mapper/\
+    {{ item.vg | replace('-','--') }}-{{ item.lv | replace('-','--') }}"
   register: mapped_names
   with_items:
     - { vg: "{{ install.vg_root }}", lv: "{{ install.lv_swap }}" }

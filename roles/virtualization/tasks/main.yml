@@ -15,7 +15,8 @@
 - name: Locate nvram file
   lineinfile:
     name: /etc/libvirt/qemu.conf
-    line: "nvram = [ \"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd\" ]"
+    line: "nvram =
+      [ \"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd\" ]"
 
 - name: Enable and start firewalld
   service:
