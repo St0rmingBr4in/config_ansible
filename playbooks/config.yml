@@ -39,10 +39,12 @@
     - { role: android, tags: ['android'] }
     - { role: common, tags: ['common'] }
     - { role: cups, tags: ['cups'] }
+    - { role: dev-common, tags: ['dev-common'] }
     - { role: dev-python, tags: ['dev-python'] }
     - { role: docker, tags: ['docker'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
+    - { role: kube, tags: ['kube'] }
     - { role: lightdm, tags: ['lightdm'] }
     - { role: mozilla, tags: ['mozilla'] }
     - { role: networkmanager, tags: ['networkmanager'] }
@@ -54,7 +56,6 @@
     - { role: vim, tags: ['vim'] }
     - { role: xorg, tags: ['xorg'] }
     - { role: yubikey, tags: ['yubikey'] }
-    - { role: dev-common, tags: ['dev-common'] }
   connection: '{{ connection_type }}'
   vars:
     connection_type: local

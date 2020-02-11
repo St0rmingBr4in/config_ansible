@@ -1,0 +1,17 @@
+---
+
+- name: Install kube utils
+  pacman:
+    name:
+      - k9s
+      - kubectl
+
+- name: Install kube utils (AUR)
+  aur:
+    name:
+      - kubernetes-helmfile-bin
+      - kubernetes-helm-bin
+      - rancher-k3d-bin
+    use: trizen
+  become_user: aurbuilder
+  become: yes

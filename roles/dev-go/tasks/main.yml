@@ -3,3 +3,9 @@
   pacman:
     name:
       - go
+
+- name: Create go path
+  file:
+    path: "/{{ user.home }}/go"
+    state: directory
+    owner: "{{ user.name }}"
