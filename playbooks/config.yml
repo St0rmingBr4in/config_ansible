@@ -99,9 +99,10 @@
     - { role: gaming, tags: ['gaming'] }
     - { role: graphical_programs, tags: ['graphical_programs'] }
     - { role: hdmi-sound-toggle, tags: ['hdmi-sound-toggle'] }
+    - { role: kube, tags: ['kube'] }
+    - { role: timezone, tags: ['timezone'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: virtualization, tags: ['virtualization'] }
-    - { role: timezone, tags: ['timezone'] }
   connection: '{{ connection_type }}'
   vars:
     connection_type: local

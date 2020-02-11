@@ -4,13 +4,14 @@ all:
     thinkpad-t480:
     toshiba:
     criteo-doche:
-    localhost:2222:
+    localhost:
+      ansible_port: 2222
     desktop-pc:
     criteo-desktop-doche:
   children:
     test:
       hosts:
-        localhost:2222:
+        localhost:
     laptop:
       hosts:
         thinkpad-t480:
