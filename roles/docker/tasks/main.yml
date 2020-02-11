@@ -5,9 +5,11 @@
       - docker
       - docker-compose
 
-- name: Install lazydocker
+- name: Install docker tools
   aur:
-    name: lazydocker-git
+    name:
+      - lazydocker-git
+      - ctop-bin
     use: trizen
   become_user: aurbuilder
   become: yes

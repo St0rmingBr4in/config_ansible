@@ -23,6 +23,13 @@
     dest: /etc/pacman.conf
   when: only_user_confs is not defined or not only_user_confs
 
+- name: Enable parallel compilation in makepkg
+  lineinfile: dest=/etc/makepkg.conf
+              regexp="^MAKEFLAGS="
+              state=present
+              line="MAKEFLAGS=\"-j$(nproc)\""
+  when: only_user_confs is not defined or not only_user_confs
+
 - name: Disable compression in makepkg
   lineinfile: dest=/etc/makepkg.conf
               regexp="^PKGEXT="
