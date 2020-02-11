@@ -1,27 +1,38 @@
-[test]
-localhost:2222
-
-[laptop]
-thinkpad-t480
-toshiba
-criteo-doche
-
-[desktop]
-desktop-pc
-criteo-desktop-doche
-
-[only_confs]
-
-[personal]
-thinkpad-t480
-toshiba
-
-[ext_gpu]
-thinkpad-t480
-
-[criteo]
-criteo-doche
-criteo-desktop-doche
-
-[wifi_capable]
-desktop-pc
+---
+all:
+  hosts:
+    thinkpad-t480:
+    toshiba:
+    criteo-doche:
+    localhost:2222:
+    desktop-pc:
+    criteo-desktop-doche:
+  children:
+    test:
+      hosts:
+        localhost:2222:
+    laptop:
+      hosts:
+        thinkpad-t480:
+        toshiba:
+        criteo-doche:
+    desktop:
+      hosts:
+        desktop-pc:
+        criteo-desktop-doche:
+    personal:
+      hosts:
+        thinkpad-t480:
+        toshiba:
+    ext_gpu:
+      hosts:
+        thinkpad-t480:
+    criteo:
+      hosts:
+        criteo-doche:
+        criteo-desktop-doche:
+    wifi_capable:
+      children:
+        laptop:
+      hosts:
+        desktop-pc:
