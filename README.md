@@ -8,6 +8,13 @@
 * Add it to `[laptop]`, `[desktop]` or `[only_confs]` in the `hosts` file
 * Run `ansible-playbook --diff playbooks/config.yml -l <new_PC_hostname>`
 
+## Installing from USB live
+
+You can run the playbook `playbooks/install.yml` from the live USB, it will install Arch linux with the following configuration:
+* LVM on LUKS
+* systemdboot as bootloader
+* intel-ucode if applicable
+
 ## CI code sanity checks
 
 * The CI checks the code using `ansible-lint` and `yaml-lint`
