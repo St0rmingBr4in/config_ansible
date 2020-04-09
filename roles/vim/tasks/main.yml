@@ -43,6 +43,7 @@
       - cquery
       - gitlint
       - hadolint-bin
+      - rpmlint
       - vale-bin
   become: yes
   become_user: aurbuilder
