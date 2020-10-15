@@ -12,6 +12,7 @@
       - kubernetes-helmfile-bin
       - kubernetes-helm-bin
       - rancher-k3d-bin
+      - velero-bin
     use: trizen
   become_user: aurbuilder
   become: yes
