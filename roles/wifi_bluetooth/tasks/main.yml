@@ -6,8 +6,10 @@
       - bluez-libs
       - bluez-utils
       - dialog
+      - playerctl
       - pulseaudio-alsa
       - pulseaudio-bluetooth
+      - sxhkd
       - wpa_supplicant
     update_cache: yes
     state: present
@@ -29,4 +31,34 @@
   service:
     name: bluetooth-autoconnect
     enabled: yes
+  when: no_systemd is not defined or not no_systemd
+
+# AVRCP support
+- name: Load uinput at boot
+  copy:
+    content: uinput
+    dest: /etc/modules-load.d/avrcp.conf
+
+- name: Create sxhkd config dir
+  file:
+    path: "{{ user.home }}/.config/sxhkd"
+    state: directory
+
+- name: Configure sxhkd
+  blockinfile:
+    path: "{{ user.home }}/.config/sxhkd/sxhkdrc"
+    block: |
+      XF86Audio{Play,Prev,Next}
+              playerctl {play-pause,previous,next}
+
+- name: Add sxhkd service
+  get_url:
+    url: "https://raw.githubusercontent.com/baskerville/\
+      sxhkd/master/contrib/systemd/sxhkd.service"
+    dest: /etc/systemd/system/sxhkd.service
+
+- name: Enable sxhkd service
+  service:
+    name: sxhkd
+    enabled: true
   when: no_systemd is not defined or not no_systemd
