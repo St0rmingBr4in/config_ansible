@@ -25,7 +25,6 @@
     name:
       - flawfinder
       - languagetool
-      - shellcheck
       - vint
       - yamllint
   when: only_user_confs is not defined or not only_user_confs
@@ -44,6 +43,7 @@
       - gitlint
       - hadolint-bin
       - rpmlint
+      - shellcheck-bin
       - vale-bin
   become: yes
   become_user: aurbuilder
